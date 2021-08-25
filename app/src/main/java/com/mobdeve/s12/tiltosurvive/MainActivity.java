@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        this.btnAchievments = findViewById(R.id.);
+        this.btnAchievments = findViewById(R.id.btn_achievements);
         this.btnStart = findViewById(R.id.btn_start);
 
         this.btnAchievments.setOnClickListener(v -> {
