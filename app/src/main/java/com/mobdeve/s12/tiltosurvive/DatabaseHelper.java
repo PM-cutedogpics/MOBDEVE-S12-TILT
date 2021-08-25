@@ -53,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + TABLE_NAME_POWER + " (" +
                 COLUMN_ID_POWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_POWER_NAME + " TEXT, " +
-                COLUMN_POWER_OWNED + " INTEGER, " +
+                COLUMN_POWER_OWNED + " INTEGER" +
                         ");";
 
         String create_query_history =
@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_ID_HISTORY + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_HISTORY_DATE + " TEXT, " +
                         COLUMN_HISTORY_SCORE + " INTEGER, " +
-                        COLUMN_HISTORY_TIME + " TEXT, " +
+                        COLUMN_HISTORY_TIME + " TEXT" +
                         ");";
 
         String create_query_stats =
@@ -71,21 +71,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_STATS_DEATHS + " INTEGER, " +
                         COLUMN_STATS_POWERS + " INTEGER, " +
                         COLUMN_STATS_LONGEST + " TEXT, " +
-                        COLUMN_STATS_HIGHEST + " INTEGER, " +
+                        COLUMN_STATS_HIGHEST + " INTEGER" +
                         ");";
 
         String create_query_achie =
                 "CREATE TABLE " + TABLE_NAME_ACHIE + " (" +
                         COLUMN_ID_ACHIE + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_ACHIE_NAME + " TEXT, " +
-                        COLUMN_ACHIE_ACHIEVED + " INTEGER, " +
+                        COLUMN_ACHIE_ACHIEVED + " INTEGER" +
                         ");";
 
         String create_query_settings =
                 "CREATE TABLE " + TABLE_NAME_SETTINGS + " (" +
                         COLUMN_ID_SETTINGS + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_SETTINGS_MUSIC + " INTEGER, " +
-                        COLUMN_SETTINGS_SFX + " INTEGER, " +
+                        COLUMN_SETTINGS_SFX + " INTEGER" +
                         ");";
 
         sqLiteDatabase.execSQL(create_query_power);
@@ -95,12 +95,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(create_query_settings);
     }
 
-    public long updatePower(String rowId, String name, Boolean owned) {
+    public long updatePower(String rowId, Boolean owned) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_POWER_NAME, name);
         cv.put(COLUMN_POWER_OWNED, owned);
 
         long result = db.update(TABLE_NAME_POWER, cv, "_id = ?", new String[]{rowId});
