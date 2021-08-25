@@ -19,7 +19,7 @@
             android:screenOrientation="landscape" />
         <activity android:name=".StoreActivity"
             android:screenOrientation="landscape"></activity>
-        <activity android:name=".postGameActivity"
+        <activity android:name=".PostGameActivity"
             android:screenOrientation="landscape"></activity>
         <activity
             android:name=".MainActivity"

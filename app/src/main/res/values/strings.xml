@@ -6,14 +6,10 @@
     <string name="tv_force_field">400</string>
     <string name="tv_haste">400</string>
     <string name="tv_slow">350</string>
-    <string name="tv_store">STORE</string>
+    <string name="tv_store_title">STORE</string>
     <string name="tv_balance">0</string>
-<!--    <string name="tv_freeze">450</string>-->
-<!--    <string name="tv_nuke">500</string>-->
-<!--    <string name="tv_laser">450</string>-->
-<!--    <string name="tv_force_field">400</string>-->
-<!--    <string name="tv_freeze">450</string>-->
-<!--    <string name="tv_nuke">500</string>-->
-<!--    <string name="tv_laser">450</string>-->
-<!--    <string name="tv_force_field">400</string>-->
+    <string name="tv_title">TILT TO SURVIVE</string>
+    <string name="tv_start">START GAME</string>
+    <string name="tv_store">STORE</string>
+    <string name="tv_instructions">HOW TO PLAY</string>
 </resources>

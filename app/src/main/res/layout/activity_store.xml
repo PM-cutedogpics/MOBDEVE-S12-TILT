@@ -276,7 +276,7 @@
         android:fontFamily="@font/eight_bit_wonder"
         android:gravity="center"
         android:paddingBottom="3dp"
-        android:text="@string/tv_store"
+        android:text="@string/tv_store_title"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/gl_title_bottom"
         app:layout_constraintEnd_toStartOf="@+id/gl_third_col_left"
