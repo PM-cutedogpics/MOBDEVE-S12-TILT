@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        this.ibtnSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
         this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
         this.music.setLooping(true);
         this.music.start();

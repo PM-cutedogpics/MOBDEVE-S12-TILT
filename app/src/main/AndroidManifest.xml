@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVES12TilttoSurvive">
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".ViewAchievementActivity"
             android:screenOrientation="landscape"></activity>
         <activity
