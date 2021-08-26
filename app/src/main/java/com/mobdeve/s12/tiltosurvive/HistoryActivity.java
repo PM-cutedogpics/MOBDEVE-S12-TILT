@@ -3,6 +3,8 @@ package com.mobdeve.s12.tiltosurvive;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -58,12 +60,9 @@ public class HistoryActivity extends AppCompatActivity {
         this.history = new ArrayList<HistoryModel>();
         this.helper = new DatabaseHelper(HistoryActivity.this);
         Cursor cursor = this.helper.readHistory();
-        int i = 0;
         while (cursor.moveToNext()){
-            this.history.get(i).setDate(cursor.getString(1));
-            this.history.get(i).setScore(cursor.getInt(2));
-            this.history.get(i).setTime(cursor.getString(3));
-            i++;
+            HistoryModel newHistory = new HistoryModel(cursor.getString(1), cursor.getString(3), cursor.getInt(2));
+            this.history.add(newHistory);
         }
         this.recyclerView = findViewById(R.id.rv_history);
         this.historyAdapter = new HistoryAdapter(HistoryActivity.this, HistoryActivity.this, this.history);
