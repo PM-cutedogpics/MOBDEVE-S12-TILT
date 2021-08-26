@@ -20,6 +20,7 @@
         android:id="@+id/tv_achievements_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
         android:text="ACHIEVEMENTS"
         android:textColor="#000000"
         android:textSize="30sp"

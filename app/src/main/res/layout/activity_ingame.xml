@@ -19,6 +19,7 @@
         android:id="@+id/btn_fake"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
         android:text="Free Points!!!!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +30,7 @@
         android:id="@+id/chr_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
         app:layout_constraintStart_toEndOf="@+id/btn_pause"
         tools:layout_editor_absoluteY="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

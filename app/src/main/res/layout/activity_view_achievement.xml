@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
+        android:fontFamily="@font/eight_bit_wonder"
         android:text="TITLE"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -23,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/eight_bit_wonder"
         android:text="DESCRIPTION"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_va_title"
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/eight_bit_wonder"
         android:text="Back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

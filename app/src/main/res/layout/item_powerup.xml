@@ -22,6 +22,7 @@
         android:id="@+id/tv_powerup_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
         android:text="Ka-boom!"
         android:textAlignment="center"
         android:textColor="#000000"
