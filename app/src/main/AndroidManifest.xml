@@ -10,25 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVES12TilttoSurvive">
         <activity android:name=".ViewAchievementActivity"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".PreGameActivity"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".AchievementsActivity"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".SettingsActivity"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="landscape" />
         <activity android:name=".IngameActivity"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="landscape"></activity>
+        <activity android:name=".HistoryActivity"
+            android:screenOrientation="landscape"></activity>
         <activity android:name=".StoreActivity"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="landscape"></activity>
         <activity android:name=".PostGameActivity"
-            android:screenOrientation="sensorLandscape"></activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="sensorLandscape">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

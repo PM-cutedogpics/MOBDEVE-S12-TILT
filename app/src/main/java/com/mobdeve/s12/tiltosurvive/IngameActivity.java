@@ -48,12 +48,6 @@ public class IngameActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        ingame.pause();
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         ingame.start();
