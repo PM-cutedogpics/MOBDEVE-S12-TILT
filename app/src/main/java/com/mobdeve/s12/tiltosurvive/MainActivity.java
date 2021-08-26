@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
+        this.music.setLooping(true);
         this.music.start();
     }
 }
