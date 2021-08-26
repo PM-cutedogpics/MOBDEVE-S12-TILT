@@ -38,7 +38,9 @@ public class PreGameActivity extends AppCompatActivity {
         });
 
         this.btnStart.setOnClickListener(v -> {
-            Toast.makeText(this, "GAME START", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(PreGameActivity.this, IngameActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
