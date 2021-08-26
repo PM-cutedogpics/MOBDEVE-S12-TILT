@@ -132,14 +132,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public Cursor readHistory() {
+        String query = "SELECT * FROM " + TABLE_NAME_HISTORY;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+
     public long addHistory(String rowId, String date, int score, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_HISTORY_DATE, date);
-        cv.put(COLUMN_HISTORY_SCORE, date);
-        cv.put(COLUMN_HISTORY_TIME, date);
+        cv.put(COLUMN_HISTORY_SCORE, score);
+        cv.put(COLUMN_HISTORY_TIME, score);
 
         long result = db.insert(TABLE_NAME_HISTORY, null, cv);
 
