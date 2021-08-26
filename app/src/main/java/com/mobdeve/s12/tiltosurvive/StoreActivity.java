@@ -28,10 +28,12 @@ public class StoreActivity extends AppCompatActivity {
     private TextView tvPriceForceField;
     private TextView tvPriceHaste;
     private TextView tvPriceSpeedDown;
+    private TextView tvBalance;
 
     private DatabaseHelper helper;
 
     private PowerUps powerUps;
+    private int balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,8 @@ public class StoreActivity extends AppCompatActivity {
         this.tvPriceHaste = findViewById(R.id.tv_price_speed_up);
         this.tvPriceSpeedDown = findViewById(R.id.tv_price_speed_down);
 
+        this.tvBalance = findViewById(R.id.tv_balance);
+
         this.powerUps = new PowerUps();
 
         this.helper = new DatabaseHelper(StoreActivity.this);
@@ -73,6 +77,13 @@ public class StoreActivity extends AppCompatActivity {
             this.powerUps.getName().add(cursor.getString(1));
             this.powerUps.getOwned().add(cursor.getInt(2));
         }
+
+        cursor = this.helper.readStats();
+        while (cursor.moveToNext()) {
+            this.balance = (cursor.getInt(6));
+        }
+
+        this.tvBalance.setText(String.valueOf(this.balance));
 
         if (this.powerUps.getOwned().get(0) == 1) {
             ibtnFreeze.setClickable(false);
@@ -87,6 +98,8 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnFreeze.setClickable(false);
                     ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
+                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceFreeze.getText().toString())));
                     tvPriceFreeze.setText("SOLD");
                 }
             });
@@ -104,6 +117,9 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnNuke.setClickable(false);
                     ibtnNuke.setColorFilter(Color.argb(80, 43, 43, 43));
+                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceNuke.getText().toString())));
+                    tvPriceFreeze.setText("SOLD");
                     tvPriceNuke.setText("SOLD");
                 }
             });
@@ -122,6 +138,8 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnLazer.setClickable(false);
                     ibtnLazer.setColorFilter(Color.argb(80, 43, 43, 43));
+                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceLazer.getText().toString())));
                     tvPriceLazer.setText("SOLD");
                 }
             });
@@ -139,6 +157,8 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnForceField.setClickable(false);
                     ibtnForceField.setColorFilter(Color.argb(80, 43, 43, 43));
+                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceForceField.getText().toString())));
                     tvPriceForceField.setText("SOLD");
                 }
             });
@@ -157,6 +177,8 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnHaste.setClickable(false);
                     ibtnHaste.setColorFilter(Color.argb(80, 43, 43, 43));
+                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceHaste.getText().toString())));
                     tvPriceHaste.setText("SOLD");
                 }
             });
@@ -175,6 +197,8 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnSpeedDown.setClickable(false);
                     ibtnSpeedDown.setColorFilter(Color.argb(80, 43, 43, 43));
+                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceSpeedDown.getText().toString())));
                     tvPriceSpeedDown.setText("SOLD");
                 }
             });

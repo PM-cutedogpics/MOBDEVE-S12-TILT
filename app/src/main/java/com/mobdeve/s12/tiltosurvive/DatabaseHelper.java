@@ -34,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_STATS_POWERS = "stats_powers";
     private static final String COLUMN_STATS_LONGEST = "stats_longest";
     private static final String COLUMN_STATS_HIGHEST = "stats_highest";
+    private static final String COLUMN_STATS_BALANCE = "stats_balance";
     // Achievements Collection - update
     private static final String TABLE_NAME_ACHIE = "achie_information";
     private static final String COLUMN_ID_ACHIE = "_id";
@@ -54,35 +55,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String create_query_power =
                 "CREATE TABLE " + TABLE_NAME_POWER + " (" +
-                COLUMN_ID_POWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_POWER_NAME + " TEXT, " +
-                COLUMN_POWER_OWNED + " INTEGER" +
+                        COLUMN_ID_POWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        COLUMN_POWER_NAME + " TEXT, " +
+                        COLUMN_POWER_OWNED + " INTEGER" +
                         ");";
-        sqLiteDatabase.execSQL(create_query_power);
-
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(1, 'Freeze', 0)");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(2, 'Nuke', 0)");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(3, 'Lazer', 0)");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(4, 'Force Field', 0)");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(5, 'Haste', 0)");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(6, 'Speed Down', 0)");
-//
-//        ContentValues values = new ContentValues();
-//        Resources res = context.getResources();
-//        String[] names = res.getStringArray(R.array.init_power);
-//        Log.d("asd", "Added");
-//        for (String name : names){
-//            values.put(COLUMN_POWER_NAME, name);
-//            Log.d("asdasdad", "asdasdasdad");
-//            values.put(COLUMN_POWER_OWNED, 0);
-//            sqLiteDatabase.insert(TABLE_NAME_POWER, null, values);
-//        }
 
         String create_query_history =
                 "CREATE TABLE " + TABLE_NAME_HISTORY + " (" +
@@ -99,7 +75,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_STATS_DEATHS + " INTEGER, " +
                         COLUMN_STATS_POWERS + " INTEGER, " +
                         COLUMN_STATS_LONGEST + " TEXT, " +
-                        COLUMN_STATS_HIGHEST + " INTEGER" +
+                        COLUMN_STATS_HIGHEST + " INTEGER, " +
+                        COLUMN_STATS_BALANCE + " INTEGER" +
                         ");";
 
         String create_query_achie =
@@ -116,11 +93,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_SETTINGS_SFX + " INTEGER" +
                         ");";
 
-
+        sqLiteDatabase.execSQL(create_query_power);
         sqLiteDatabase.execSQL(create_query_history);
         sqLiteDatabase.execSQL(create_query_stats);
         sqLiteDatabase.execSQL(create_query_achie);
         sqLiteDatabase.execSQL(create_query_settings);
+
+        // Initialize Default Values for Power-Ups
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(1, 'Freeze', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(2, 'Nuke', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(3, 'Lazer', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(4, 'Force Field', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(5, 'Haste', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(6, 'Speed Down', 0)");
+        // Initialize Default Values for Statistics
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_STATS + "(" +
+                COLUMN_STATS_TIME + ", " + COLUMN_STATS_DEATHS + ", " +
+                COLUMN_STATS_POWERS + ", " + COLUMN_STATS_LONGEST + ", " +
+                COLUMN_STATS_HIGHEST + ", " + COLUMN_STATS_BALANCE + ") " +
+                "values('0:00', 0, 0, '0:00', 0, 1000)");
     }
 
     public long updatePower(String rowId, int owned) {
@@ -147,6 +144,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME_HISTORY, null, cv);
 
         return result;
+    }
+
+    public Cursor readStats() {
+        String query = "SELECT * FROM " + TABLE_NAME_STATS;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
     }
 
     public long updateStats(String rowId, String time, int deaths, int powers, String longest, int highest) {
