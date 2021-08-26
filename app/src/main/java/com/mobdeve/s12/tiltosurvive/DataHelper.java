@@ -38,30 +38,56 @@ public class DataHelper {
         ArrayList<PowerUpsModel> powerups = new ArrayList<>();
 
         String[] titles = {
-                "Extra Life?",
-                "Ka-boom!",
+                "Bubble",
+                "FREEZE!",
                 "Swift Escape",
-                "I AM INVINCIBLE!"
+                "Pew pew",
+                "Ka-boom!",
+                "Slow down"
         };
         String[] descriptions = {
                 "Gains a shield for 10 seconds.",
-                "Nukes around the spaceship.",
+                "Freeze cows around the spaceship.",
                 "Increases speed of the spaceship for 5 seconds.",
-                "Become invincible for 5 seconds."
+                "Shoots a laser depending on where the spaceship is aimed at",
+                "Nukes around the spaceship.",
+                "Slows cows down for 5 seconds."
         };
 
         int[] icons = {
-                R.drawable.powerup_heart,
-                R.drawable.powerup_nuke,
-                R.drawable.powerup_speedup,
-                R.drawable.powerup_star
+                R.drawable.force_field_box_grey,
+                R.drawable.freeze_box_grey,
+                R.drawable.haste_box_grey,
+                R.drawable.laser_box_grey,
+                R.drawable.nuke_box_grey,
+                R.drawable.slow_box_grey
         };
 
-        for(int i = 0; i < 4; i++) {
+        int[] iconsActivated = {
+                R.drawable.force_field_box,
+                R.drawable.freeze_box,
+                R.drawable.haste_box,
+                R.drawable.laser_box,
+                R.drawable.nuke_box,
+                R.drawable.slow_box
+        };
+
+        boolean[] isSelected = {
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+        };
+
+        for(int i = 0; i < 6; i++) {
             powerups.add(new PowerUpsModel(
                     titles[i],
                     descriptions[i],
-                    icons[i]
+                    icons[i],
+                    iconsActivated[i],
+                    isSelected[i]
             ));
         }
 
