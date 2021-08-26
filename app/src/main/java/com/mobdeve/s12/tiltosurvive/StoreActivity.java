@@ -252,7 +252,7 @@ public class StoreActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         MainActivity.music.pause();
-        this.helper.updateBalance("1", this.balance)
+        this.helper.updateBalance("1", this.balance);
     }
 
     @Override
