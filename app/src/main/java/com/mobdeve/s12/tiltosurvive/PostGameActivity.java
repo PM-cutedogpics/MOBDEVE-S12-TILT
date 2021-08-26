@@ -20,4 +20,16 @@ public class PostGameActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
+    }
 }

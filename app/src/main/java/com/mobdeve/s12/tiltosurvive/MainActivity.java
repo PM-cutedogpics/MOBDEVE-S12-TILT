@@ -69,4 +69,16 @@ public class MainActivity extends AppCompatActivity {
         this.music.setLooping(true);
         this.music.start();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        music.start();
+    }
 }

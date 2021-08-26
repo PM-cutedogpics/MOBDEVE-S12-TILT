@@ -53,4 +53,16 @@ public class ViewAchievementActivity extends AppCompatActivity {
             Toast.makeText(this, "No data. Return back to achievements.", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
+    }
 }

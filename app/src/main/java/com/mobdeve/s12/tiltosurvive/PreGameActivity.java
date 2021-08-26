@@ -53,4 +53,16 @@ public class PreGameActivity extends AppCompatActivity {
         this.recyclerView.setAdapter(this.preGameAdapter);
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
+    }
 }

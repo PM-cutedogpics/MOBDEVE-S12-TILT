@@ -191,4 +191,16 @@ public class StoreActivity extends AppCompatActivity {
             Toast.makeText(this, "Power Up Succesfully Bought", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
+    }
 }
