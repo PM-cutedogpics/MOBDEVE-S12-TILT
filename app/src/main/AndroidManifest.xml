@@ -22,6 +22,8 @@
             android:screenOrientation="landscape" />
         <activity android:name=".IngameActivity"
             android:screenOrientation="landscape"></activity>
+        <activity android:name=".HistoryActivity"
+            android:screenOrientation="landscape"></activity>
         <activity android:name=".StoreActivity"
             android:screenOrientation="landscape"></activity>
         <activity android:name=".PostGameActivity"
