@@ -172,6 +172,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public long updateBalance(String rowId, int balance) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_STATS_BALANCE, balance);
+
+        long result = db.update(TABLE_NAME_STATS, cv, "_id = ?", new String[]{rowId});
+
+        return result;
+    }
+
     public long updateStats(String rowId, String time, int deaths, int powers, String longest, int highest) {
         SQLiteDatabase db = this.getWritableDatabase();
 

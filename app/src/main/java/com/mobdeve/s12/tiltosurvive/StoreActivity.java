@@ -89,6 +89,9 @@ public class StoreActivity extends AppCompatActivity {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");
+        } else if (Integer.parseInt(tvPriceFreeze.getText().toString()) > this.balance) {
+            ibtnFreeze.setClickable(false);
+            ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
         } else {
             this.ibtnFreeze.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,16 +101,21 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnFreeze.setClickable(false);
                     ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
-                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
-                            Integer.parseInt(tvPriceFreeze.getText().toString())));
+                    balance = Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceFreeze.getText().toString());
+                    tvBalance.setText(String.valueOf(balance));
                     tvPriceFreeze.setText("SOLD");
                 }
             });
         }
+
         if (this.powerUps.getOwned().get(1) == 1) {
             ibtnNuke.setClickable(false);
             ibtnNuke.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceNuke.setText("SOLD");
+        } else if (Integer.parseInt(tvPriceNuke.getText().toString()) > this.balance) {
+            ibtnNuke.setClickable(false);
+            ibtnNuke.setColorFilter(Color.argb(80, 43, 43, 43));
         } else {
             this.ibtnNuke.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -117,8 +125,9 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnNuke.setClickable(false);
                     ibtnNuke.setColorFilter(Color.argb(80, 43, 43, 43));
-                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
-                            Integer.parseInt(tvPriceNuke.getText().toString())));
+                    balance = Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceNuke.getText().toString());
+                    tvBalance.setText(String.valueOf(balance));
                     tvPriceFreeze.setText("SOLD");
                     tvPriceNuke.setText("SOLD");
                 }
@@ -129,6 +138,9 @@ public class StoreActivity extends AppCompatActivity {
             ibtnLazer.setClickable(false);
             ibtnLazer.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceLazer.setText("SOLD");
+        } else if (Integer.parseInt(tvPriceLazer.getText().toString()) > this.balance) {
+            ibtnLazer.setClickable(false);
+            ibtnLazer.setColorFilter(Color.argb(80, 43, 43, 43));
         } else {
             this.ibtnLazer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -138,8 +150,9 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnLazer.setClickable(false);
                     ibtnLazer.setColorFilter(Color.argb(80, 43, 43, 43));
-                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
-                            Integer.parseInt(tvPriceLazer.getText().toString())));
+                    balance = Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceLazer.getText().toString());
+                    tvBalance.setText(String.valueOf(balance));
                     tvPriceLazer.setText("SOLD");
                 }
             });
@@ -148,6 +161,9 @@ public class StoreActivity extends AppCompatActivity {
             ibtnForceField.setClickable(false);
             ibtnForceField.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceForceField.setText("SOLD");
+        } else if (Integer.parseInt(tvPriceForceField.getText().toString()) > this.balance) {
+            ibtnForceField.setClickable(false);
+            ibtnForceField.setColorFilter(Color.argb(80, 43, 43, 43));
         } else {
             this.ibtnForceField.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -157,8 +173,9 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnForceField.setClickable(false);
                     ibtnForceField.setColorFilter(Color.argb(80, 43, 43, 43));
-                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
-                            Integer.parseInt(tvPriceForceField.getText().toString())));
+                    balance = Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceForceField.getText().toString());
+                    tvBalance.setText(String.valueOf(balance));
                     tvPriceForceField.setText("SOLD");
                 }
             });
@@ -168,6 +185,9 @@ public class StoreActivity extends AppCompatActivity {
             ibtnHaste.setClickable(false);
             ibtnHaste.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceHaste.setText("SOLD");
+        } else if (Integer.parseInt(tvPriceHaste.getText().toString()) > this.balance) {
+            ibtnHaste.setClickable(false);
+            ibtnHaste.setColorFilter(Color.argb(80, 43, 43, 43));
         } else {
             this.ibtnHaste.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -177,8 +197,9 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnHaste.setClickable(false);
                     ibtnHaste.setColorFilter(Color.argb(80, 43, 43, 43));
-                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
-                            Integer.parseInt(tvPriceHaste.getText().toString())));
+                    balance = Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceHaste.getText().toString());
+                    tvBalance.setText(String.valueOf(balance));
                     tvPriceHaste.setText("SOLD");
                 }
             });
@@ -188,6 +209,9 @@ public class StoreActivity extends AppCompatActivity {
             ibtnSpeedDown.setClickable(false);
             ibtnSpeedDown.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceSpeedDown.setText("SOLD");
+        } else if (Integer.parseInt(tvPriceSpeedDown.getText().toString()) > this.balance) {
+            ibtnSpeedDown.setClickable(false);
+            ibtnSpeedDown.setColorFilter(Color.argb(80, 43, 43, 43));
         } else {
             this.ibtnSpeedDown.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -197,8 +221,9 @@ public class StoreActivity extends AppCompatActivity {
                     finishUpdateStore(result);
                     ibtnSpeedDown.setClickable(false);
                     ibtnSpeedDown.setColorFilter(Color.argb(80, 43, 43, 43));
-                    tvBalance.setText(String.valueOf(Integer.parseInt(tvBalance.getText().toString()) -
-                            Integer.parseInt(tvPriceSpeedDown.getText().toString())));
+                    balance = Integer.parseInt(tvBalance.getText().toString()) -
+                            Integer.parseInt(tvPriceSpeedDown.getText().toString());
+                    tvBalance.setText(String.valueOf(balance));
                     tvPriceSpeedDown.setText("SOLD");
                 }
             });
@@ -214,15 +239,38 @@ public class StoreActivity extends AppCompatActivity {
         }
     }
 
+    private void finishUpdateBalance(long result) {
+        if (result == -1) {
+            Toast.makeText(this, "Failed to Save Balance", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "Balance Saved", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
         MainActivity.music.pause();
+        this.helper.updateBalance("1", this.balance)
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         MainActivity.music.start();
+
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
     }
 }
