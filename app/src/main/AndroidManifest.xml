@@ -17,6 +17,9 @@
         <activity
             android:name=".AchievementsActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".StoreActivity"
             android:screenOrientation="landscape"></activity>
         <activity android:name=".PostGameActivity"

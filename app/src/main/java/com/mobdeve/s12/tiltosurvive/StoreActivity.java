@@ -31,7 +31,7 @@ public class StoreActivity extends AppCompatActivity {
 
     private DatabaseHelper helper;
 
-
+    private PowerUps powerUps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +64,18 @@ public class StoreActivity extends AppCompatActivity {
         this.tvPriceHaste = findViewById(R.id.tv_price_speed_up);
         this.tvPriceSpeedDown = findViewById(R.id.tv_price_speed_down);
 
-        this.name = new ArrayList<String>();
-        this.owned = new ArrayList<Integer>();
+        this.powerUps = new PowerUps();
 
         this.helper = new DatabaseHelper(StoreActivity.this);
         Cursor cursor = this.helper.readPowerData();
 
         while (cursor.moveToNext()) {
-            this.name.add(cursor.getString(1));
-            this.owned.add(cursor.getInt(2));
+            this.powerUps.getName().add(cursor.getString(1));
+            this.powerUps.getOwned().add(cursor.getInt(2));
             Log.d("Cursor", "HAAA");
         }
 
-        if (this.owned.get(0) == 1) {
+        if (this.powerUps.getOwned().get(0) == 1) {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");
@@ -93,7 +92,7 @@ public class StoreActivity extends AppCompatActivity {
                 }
             });
         }
-        if (this.owned.get(1) == 1) {
+        if (this.powerUps.getOwned().get(1) == 1) {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");
@@ -111,7 +110,7 @@ public class StoreActivity extends AppCompatActivity {
             });
         }
 
-        if (this.owned.get(2) == 1) {
+        if (this.powerUps.getOwned().get(2) == 1) {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");
@@ -128,7 +127,7 @@ public class StoreActivity extends AppCompatActivity {
                 }
             });
         }
-        if (this.owned.get(3) == 1) {
+        if (this.powerUps.getOwned().get(3) == 1) {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");
@@ -146,7 +145,7 @@ public class StoreActivity extends AppCompatActivity {
             });
         }
 
-        if (this.owned.get(4) == 1) {
+        if (this.powerUps.getOwned().get(4) == 1) {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");
@@ -164,7 +163,7 @@ public class StoreActivity extends AppCompatActivity {
             });
         }
 
-        if (this.owned.get(5) == 1) {
+        if (this.powerUps.getOwned().get(5) == 1) {
             ibtnFreeze.setClickable(false);
             ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
             tvPriceFreeze.setText("SOLD");

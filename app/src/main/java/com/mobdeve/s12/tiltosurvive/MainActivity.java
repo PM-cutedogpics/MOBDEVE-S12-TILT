@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         this.ibtnAchievments.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.btnStart.setOnClickListener(v -> {
@@ -62,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
         this.btnStore.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, StoreActivity.class);
+            startActivity(intent);
+        });
+
+        this.ibtnSettings.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
 
