@@ -42,24 +42,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_SFX" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_settings_music" />
 
-    <Switch
-        android:id="@+id/btn_music"
-        android:layout_width="100dp"
+    <TextView
+        android:id="@+id/tv_settings_music"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:text="Music"
         app:layout_constraintStart_toEndOf="@+id/btn_settings_back"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
-    <Switch
-        android:id="@+id/btn_SFX"
-        android:layout_width="100dp"
+    <SeekBar
+        android:id="@+id/sb_music"
+        android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="SFX    "
-        app:layout_constraintStart_toEndOf="@+id/btn_settings_back"
-        app:layout_constraintTop_toBottomOf="@+id/btn_music" />
+        android:max="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_settings_music"
+        app:layout_constraintTop_toTopOf="@+id/tv_settings_music" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

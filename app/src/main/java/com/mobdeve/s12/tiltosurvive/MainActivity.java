@@ -3,6 +3,7 @@ package com.mobdeve.s12.tiltosurvive;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnStart;
     private Button btnStore;
     private Button btnInstructions;
+
+    public static MediaPlayer music;
 
     private DatabaseHelper helper;
 
@@ -61,5 +64,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, StoreActivity.class);
             startActivity(intent);
         });
+
+        this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
+        this.music.start();
     }
 }
