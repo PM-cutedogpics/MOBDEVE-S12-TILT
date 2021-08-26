@@ -72,7 +72,6 @@ public class StoreActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             this.powerUps.getName().add(cursor.getString(1));
             this.powerUps.getOwned().add(cursor.getInt(2));
-            Log.d("Cursor", "HAAA");
         }
 
         if (this.powerUps.getOwned().get(0) == 1) {
@@ -87,15 +86,15 @@ public class StoreActivity extends AppCompatActivity {
                     long result = db.updatePower("1", 1);
                     finishUpdateStore(result);
                     ibtnFreeze.setClickable(false);
-                    ibtnNuke.setColorFilter(Color.argb(80, 43, 43, 43));
+                    ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
                     tvPriceFreeze.setText("SOLD");
                 }
             });
         }
         if (this.powerUps.getOwned().get(1) == 1) {
-            ibtnFreeze.setClickable(false);
-            ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
-            tvPriceFreeze.setText("SOLD");
+            ibtnNuke.setClickable(false);
+            ibtnNuke.setColorFilter(Color.argb(80, 43, 43, 43));
+            tvPriceNuke.setText("SOLD");
         } else {
             this.ibtnNuke.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,9 +110,9 @@ public class StoreActivity extends AppCompatActivity {
         }
 
         if (this.powerUps.getOwned().get(2) == 1) {
-            ibtnFreeze.setClickable(false);
-            ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
-            tvPriceFreeze.setText("SOLD");
+            ibtnLazer.setClickable(false);
+            ibtnLazer.setColorFilter(Color.argb(80, 43, 43, 43));
+            tvPriceLazer.setText("SOLD");
         } else {
             this.ibtnLazer.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -128,9 +127,9 @@ public class StoreActivity extends AppCompatActivity {
             });
         }
         if (this.powerUps.getOwned().get(3) == 1) {
-            ibtnFreeze.setClickable(false);
-            ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
-            tvPriceFreeze.setText("SOLD");
+            ibtnForceField.setClickable(false);
+            ibtnForceField.setColorFilter(Color.argb(80, 43, 43, 43));
+            tvPriceForceField.setText("SOLD");
         } else {
             this.ibtnForceField.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -146,9 +145,9 @@ public class StoreActivity extends AppCompatActivity {
         }
 
         if (this.powerUps.getOwned().get(4) == 1) {
-            ibtnFreeze.setClickable(false);
-            ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
-            tvPriceFreeze.setText("SOLD");
+            ibtnHaste.setClickable(false);
+            ibtnHaste.setColorFilter(Color.argb(80, 43, 43, 43));
+            tvPriceHaste.setText("SOLD");
         } else {
             this.ibtnHaste.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -164,9 +163,9 @@ public class StoreActivity extends AppCompatActivity {
         }
 
         if (this.powerUps.getOwned().get(5) == 1) {
-            ibtnFreeze.setClickable(false);
-            ibtnFreeze.setColorFilter(Color.argb(80, 43, 43, 43));
-            tvPriceFreeze.setText("SOLD");
+            ibtnSpeedDown.setClickable(false);
+            ibtnSpeedDown.setColorFilter(Color.argb(80, 43, 43, 43));
+            tvPriceSpeedDown.setText("SOLD");
         } else {
             this.ibtnSpeedDown.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -187,7 +186,7 @@ public class StoreActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed to Buy Power Up", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(this, "Power Up Succesfully Bought", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Power Up Successfully Bought", Toast.LENGTH_SHORT).show();
         }
     }
 

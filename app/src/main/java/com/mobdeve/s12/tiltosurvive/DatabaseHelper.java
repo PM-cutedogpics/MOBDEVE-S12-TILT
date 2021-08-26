@@ -197,25 +197,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         Cursor cursor = null;
 
-        Log.d("Asdfsf", "HALP");
         if (db != null) {
             cursor = db.rawQuery(query, null);
-            Log.d("asdas", "sfas");
-        }
-
-        return cursor;
-    }
-
-    public Cursor instantiateDB() {
-        String query = "SELECT * FROM " + TABLE_NAME_POWER;
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = null;
-
-        Log.d("Asdfsf", "HALP");
-        if (db != null) {
-            cursor = db.rawQuery(query, null);
-            Log.d("asdas", "sfas");
         }
 
         return cursor;
