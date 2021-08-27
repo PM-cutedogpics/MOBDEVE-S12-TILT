@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/space_bg">
+
+    <ImageButton
+        android:id="@+id/btn_history_back"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -18,7 +32,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Top Score: 9999"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
@@ -32,24 +46,13 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="GAME LOG"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
-    <Button
-        android:id="@+id/btn_history_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"
@@ -69,6 +72,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Date"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/tv_history_score1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_history_label" />
@@ -80,6 +84,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Score"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/tv_history_time1"
         app:layout_constraintStart_toEndOf="@+id/tv_history_date1"
         app:layout_constraintTop_toBottomOf="@+id/tv_history_label" />
@@ -91,6 +96,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Time"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_history_score1"
         app:layout_constraintTop_toBottomOf="@+id/tv_history_label" />

@@ -27,7 +27,7 @@
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Ka-boom!"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="11sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"

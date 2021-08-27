@@ -9,12 +9,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
 public class AchievementsActivity extends AppCompatActivity {
 
-    private Button btnBack;
+    private ImageButton ibtnBack;
 
     private ArrayList<AchievementModel> achievements;
 
@@ -37,8 +38,8 @@ public class AchievementsActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         this.initRecyclerView();
-        this.btnBack = findViewById(R.id.btn_achievements_back);
-        this.btnBack.setOnClickListener(v -> {
+        this.ibtnBack = findViewById(R.id.ibtn_achie_back);
+        this.ibtnBack.setOnClickListener(v -> {
             Intent intent = new Intent(AchievementsActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -58,12 +59,6 @@ public class AchievementsActivity extends AppCompatActivity {
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         this.recyclerView.setAdapter(this.achievementsAdapter);
     }
-
-//    private void refreshData() {
-//        Cursor cursor = this.helper.readAllData();
-//
-//
-//    }
 
     @Override
     protected void onPause() {

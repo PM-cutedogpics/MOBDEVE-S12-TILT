@@ -7,6 +7,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity {
-    private Button btnBack;
+    private ImageButton btnBack;
 
     private ArrayList<HistoryModel> history;
 
@@ -63,6 +64,7 @@ public class HistoryActivity extends AppCompatActivity {
         while (cursor.moveToNext()){
             HistoryModel newHistory = new HistoryModel(cursor.getString(1), cursor.getString(3), cursor.getInt(2));
             this.history.add(newHistory);
+            Log.d("HELPPP", "HELPPPPPP");
         }
         this.recyclerView = findViewById(R.id.rv_history);
         this.historyAdapter = new HistoryAdapter(HistoryActivity.this, HistoryActivity.this, this.history);

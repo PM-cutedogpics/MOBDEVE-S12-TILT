@@ -3,7 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/space_bg">
+
+    <ImageButton
+        android:id="@+id/btn_settings_calibrate"
+        android:layout_width="199dp"
+        android:layout_height="65dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sb_music"
+        app:srcCompat="@drawable/text_box" />
+
+    <TextView
+        android:id="@+id/tv_calibrate"
+        android:layout_width="152dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:gravity="center"
+        android:text="Calibrate Position"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_settings_calibrate"
+        app:layout_constraintEnd_toEndOf="@+id/btn_settings_calibrate"
+        app:layout_constraintStart_toStartOf="@+id/btn_settings_calibrate"
+        app:layout_constraintTop_toTopOf="@+id/btn_settings_calibrate" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -18,34 +45,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="SETTINGS"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_settings_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_settings_calibrate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Calibrate Position"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_settings_music" />
 
     <TextView
         android:id="@+id/tv_settings_music"
@@ -54,16 +59,36 @@
         android:layout_marginTop="100dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Music"
-        app:layout_constraintStart_toEndOf="@+id/btn_settings_back"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <SeekBar
         android:id="@+id/sb_music"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:backgroundTint="#FFFFFF"
         android:max="100"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:progressBackgroundTint="#FFFFFF"
+        android:progressTint="#FFFFFF"
+        android:thumbTint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/tv_settings_music"
         app:layout_constraintTop_toTopOf="@+id/tv_settings_music" />
+
+    <ImageButton
+        android:id="@+id/btn_settings_back"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

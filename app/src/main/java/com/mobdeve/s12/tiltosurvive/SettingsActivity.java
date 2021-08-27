@@ -6,13 +6,14 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button btnBack;
+    private ImageButton ibtnBack;
     private SeekBar volControl;
 
     @Override
@@ -50,8 +51,8 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        this.btnBack = findViewById(R.id.btn_settings_back);
-        this.btnBack.setOnClickListener(v -> {
+        this.ibtnBack = findViewById(R.id.btn_settings_back);
+        this.ibtnBack.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

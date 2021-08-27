@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class ViewAchievementActivity extends AppCompatActivity {
 
     private TextView tvVaTitle, tvVaDesctiption;
-    private Button btnVaBack;
+    private ImageButton ibtnVaBack;
     String title, description;
 
     @Override
@@ -22,7 +23,7 @@ public class ViewAchievementActivity extends AppCompatActivity {
 
         tvVaTitle = findViewById(R.id.tv_va_title);
         tvVaDesctiption = findViewById(R.id.tv_va_description);
-        btnVaBack = findViewById(R.id.btn_va_back);
+        ibtnVaBack = findViewById(R.id.ibtn_achievements_back);
 
         getAndSetIntentData();
 
@@ -34,7 +35,7 @@ public class ViewAchievementActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        btnVaBack.setOnClickListener(v -> {
+        ibtnVaBack.setOnClickListener(v -> {
             Intent intent = new Intent(ViewAchievementActivity.this, AchievementsActivity.class);
             startActivity(intent);
             finish();
