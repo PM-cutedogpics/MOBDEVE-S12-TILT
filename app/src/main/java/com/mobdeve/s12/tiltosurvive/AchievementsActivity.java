@@ -21,6 +21,7 @@ public class AchievementsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AchievementsAdapter achievementsAdapter;
 
+    private DatabaseHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,13 @@ public class AchievementsActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        this.achievements = new DataHelper().initAchievements();
+        this.achievements = new ArrayList<AchievementModel>();
+        this.helper = new DatabaseHelper(AchievementsActivity.this);
+        Cursor cursor = this.helper.readAchievements();
+        while (cursor.moveToNext()){
+            AchievementModel achievementModel = new AchievementModel(cursor.getString(1), cursor.getString(2), cursor.getInt(3));
+            this.achievements.add(achievementModel);
+        }
         this.recyclerView = findViewById(R.id.rv_achievements);
         this.achievementsAdapter = new AchievementsAdapter(AchievementsActivity.this, AchievementsActivity.this, this.achievements);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

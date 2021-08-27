@@ -1,18 +1,22 @@
 package com.mobdeve.s12.tiltosurvive;
 
+import java.util.ArrayList;
+
 public class PowerUpsModel {
     private String title;
     private String description;
     private int imageId;
     private int activatedImageId;
-    private boolean isSelected;
+    private int isSelected;
+    private int owned;
 
-    public PowerUpsModel(String title, String description, int imageId, int activatedImageId, boolean isSelected) {
+    public PowerUpsModel(String title, String description, int imageId, int activatedImageId, int isSelected, int owned) {
         this.title = title;
         this.description = description;
         this.imageId = imageId;
         this.activatedImageId = activatedImageId;
         this.isSelected = isSelected;
+        this.owned = owned;
 
     }
 
@@ -32,11 +36,22 @@ public class PowerUpsModel {
         return activatedImageId;
     }
 
-    public boolean isSelected() {
+    public int isSelected() {
         return isSelected;
     }
 
-    public void setSelected(boolean selected) {
+    public void setSelected(int selected) {
         isSelected = selected;
+    }
+
+    public Integer getOwned() {
+        return owned;
+    }
+
+    public void setOwned(Integer owned) {
+        this.owned = owned;
+    }
+
+    public int getSelected() { return this.isSelected;
     }
 }

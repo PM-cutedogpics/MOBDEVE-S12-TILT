@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,9 @@ public class PreGameActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PreGameAdapter preGameAdapter;
     private ArrayList<PowerUpsModel> powerups;
+
+    private DatabaseHelper helper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,7 @@ public class PreGameActivity extends AppCompatActivity {
         this.btnStart = findViewById(R.id.btn_pregame_confirm);
 
         this.btnBack.setOnClickListener(v -> {
+            this.helper.resetPowerupsActive();
             Intent intent = new Intent(PreGameActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -56,12 +63,24 @@ public class PreGameActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
+
         this.recyclerView = findViewById(R.id.rv_pregame);
 
         this.recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
-        this.powerups = new DataHelper().initPowerUps();
-        this.preGameAdapter = new PreGameAdapter(PreGameActivity.this, PreGameActivity.this, this.powerups);
+        this.powerups = new ArrayList<PowerUpsModel>();
+        this.helper = new DatabaseHelper(PreGameActivity.this);
+        Cursor cursor = this.helper.readPowerData();
+        while (cursor.moveToNext()){
+            int icon = getApplicationContext().getResources().getIdentifier(cursor.getString(5).trim(), "drawable", getApplicationContext().getPackageName());
+            int iconActivated = getApplicationContext().getResources().getIdentifier(cursor.getString(6).trim(), "drawable",getApplicationContext().getPackageName());
+
+            //                                                                                    title, desc, imageid, activated, isSelected, owned
+            PowerUpsModel powerUpsModel = new PowerUpsModel(cursor.getString(1), cursor.getString(2), icon, iconActivated, cursor.getInt(3), cursor.getInt(4));
+            this.powerups.add(powerUpsModel);
+        }
+
+        this.preGameAdapter = new PreGameAdapter(PreGameActivity.this, PreGameActivity.this, this.helper, this.powerups);
         this.recyclerView.setAdapter(this.preGameAdapter);
 
     }

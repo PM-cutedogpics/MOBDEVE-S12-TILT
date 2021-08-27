@@ -19,7 +19,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME_POWER = "power_information";
     private static final String COLUMN_ID_POWER = "_id";
     private static final String COLUMN_POWER_NAME = "power_name";
+    private static final String COLUMN_POWER_DESCRIPTION = "power_description";
+    private static final String COLUMN_POWER_SELECTED = "power_selected";
     private static final String COLUMN_POWER_OWNED = "power_owned";
+    private static final String COLUMN_POWER_ICON = "power_icon";
+    private static final String COLUMN_POWER_ICON_ACTIVATED = "power_icon_activated";
     // History Collection - add
     private static final String TABLE_NAME_HISTORY = "history_information";
     private static final String COLUMN_ID_HISTORY = "_id";
@@ -39,6 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME_ACHIE = "achie_information";
     private static final String COLUMN_ID_ACHIE = "_id";
     private static final String COLUMN_ACHIE_NAME = "achie_name";
+    private static final String COLUMN_ACHIE_DESCRIPTION = "achie_description";
     private static final String COLUMN_ACHIE_ACHIEVED = "achie_achieved";
     // Settings Collection - update
     private static final String TABLE_NAME_SETTINGS = "settings_information";
@@ -57,7 +62,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + TABLE_NAME_POWER + " (" +
                         COLUMN_ID_POWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_POWER_NAME + " TEXT, " +
-                        COLUMN_POWER_OWNED + " INTEGER" +
+                        COLUMN_POWER_DESCRIPTION + " TEXT, "+
+                        COLUMN_POWER_SELECTED + " INTEGER," +
+                        COLUMN_POWER_OWNED + " INTEGER, " +
+                        COLUMN_POWER_ICON + " TEXT, " +
+                        COLUMN_POWER_ICON_ACTIVATED + " TEXT" +
                         ");";
 
         String create_query_history =
@@ -83,6 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + TABLE_NAME_ACHIE + " (" +
                         COLUMN_ID_ACHIE + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_ACHIE_NAME + " TEXT, " +
+                        COLUMN_ACHIE_DESCRIPTION + " TEXT, " +
                         COLUMN_ACHIE_ACHIEVED + " INTEGER" +
                         ");";
 
@@ -101,17 +111,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Initialize Default Values for Power-Ups
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(1, 'Freeze', 0)");
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(1, 'Freeze', 'Freeze cows around the spaceship.', 0, 0, 'freeze_box_grey', 'freeze_box')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(2, 'Nuke', 0)");
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(2, 'Nuke', 'Nukes around the spaceship.', 0, 0, 'nuke_box_grey', 'nuke_box')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(3, 'Lazer', 0)");
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(3, 'Laser', 'Shoots a laser depending on where the spaceship is aimed at.', 0, 0, 'laser_box_grey', 'laser_box')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(4, 'Force Field', 0)");
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(4, 'Force Field', 'Gains a shield for 10 seconds.', 0, 0, 'force_field_box_grey', 'force_field_box')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(5, 'Haste', 0)");
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(5, 'Haste', 'Increases speed of the spaceship for 5 seconds.', 0, 0, 'haste_box_grey', 'haste_box')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
-                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(6, 'Speed Down', 0)");
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(6, 'Speed Down', 'Slows cows down for 5 seconds.', 0, 0, 'slow_box_grey', 'slow_box')");
         // Initialize Default Values for Statistics
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_STATS + "(" +
                 COLUMN_STATS_TIME + ", " + COLUMN_STATS_DEATHS + ", " +
@@ -123,6 +139,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_HISTORY_DATE + ", " + COLUMN_HISTORY_SCORE + ", " +
                 COLUMN_HISTORY_TIME + ") " +
                 "values('08/20/21', 9999, '01:10')");
+
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Utter Defeat', 'Get defeated within 5 seconds', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Stampede', 'Kill 100 cows', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Cattle Driver', 'Block off 500 cows', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Cow Boy', 'Kill 1000 cows', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Moooooo', 'Hit a cow', 0)");
+    }
+
+    public Cursor readPowerData() {
+        String query = "SELECT * FROM " + TABLE_NAME_POWER;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
     }
 
     public long updatePower(String rowId, int owned) {
@@ -135,6 +175,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.update(TABLE_NAME_POWER, cv, "_id = ?", new String[]{rowId});
 
         return result;
+    }
+
+    public long updatePowerUpActive(String powerupName, int isSelected) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_POWER_SELECTED, isSelected);
+
+        long result = db.update(TABLE_NAME_POWER, cv, COLUMN_POWER_NAME + " = ?", new String[]{powerupName});
+
+
+        return result;
+    }
+
+    public void resetPowerupsActive() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME_POWER + " SET " + COLUMN_POWER_SELECTED + " = 0";
+        db.execSQL(query);
     }
 
     public Cursor readHistory() {
@@ -205,7 +264,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public long updateAchie(String rowId, String name, int achieved) {
+    public Cursor readAchievements() {
+        String query = "SELECT * FROM " + TABLE_NAME_ACHIE;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+
+    public long updateAchievements(String rowId, String name, int achieved) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -229,19 +301,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long result = db.update(TABLE_NAME_SETTINGS, cv, "_id = ?", new String[]{rowId});
 
         return result;
-    }
-
-    public Cursor readPowerData() {
-        String query = "SELECT * FROM " + TABLE_NAME_POWER;
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = null;
-
-        if (db != null) {
-            cursor = db.rawQuery(query, null);
-        }
-
-        return cursor;
     }
 
     @Override

@@ -21,9 +21,12 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
     private ArrayList<PowerUpsModel> powerups;
     private int counter;
 
-    public PreGameAdapter(Activity activity, Context context, ArrayList<PowerUpsModel> powerups) {
+    private DatabaseHelper database;
+
+    public PreGameAdapter(Activity activity, Context context, DatabaseHelper database, ArrayList<PowerUpsModel> powerups) {
         this.powerups = powerups;
         this.counter = 0;
+        this.database = database;
     }
 
     @NonNull
@@ -41,21 +44,31 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull PreGameViewHolder holder, int position) {
-        holder.ibPowerupIcon.setImageResource(powerups.get(position).getImageId());
-        holder.tvPowerupName.setText(String.valueOf(powerups.get(position).getTitle()));
+        PowerUpsModel powerup = powerups.get(position);
+        System.out.println("SELECTED: " + powerup.isSelected());
+        if (powerup.isSelected() == 0) {
+            holder.ibPowerupIcon.setImageResource(powerup.getImageId());
+        }
+        else {
+            holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
+        }
+        holder.tvPowerupName.setText(String.valueOf(powerup.getTitle()));
         holder.ibPowerupIcon.setOnClickListener(v -> {
             System.out.println(counter);
-            if (counter <= 3 && powerups.get(position).isSelected()) {
-                powerups.get(position).setSelected(false);
+            if (counter <= 3 && powerup.isSelected() == 1) {
+                powerup.setSelected(0);
+                database.updatePowerUpActive(powerup.getTitle(), powerup.isSelected());
                 counter--;
                 System.out.println(counter);
-                holder.ibPowerupIcon.setImageResource(powerups.get(position).getImageId());
+                holder.ibPowerupIcon.setImageResource(powerup.getImageId());
             }
-            else if (counter < 3 && !powerups.get(position).isSelected()) {
-                powerups.get(position).setSelected(true);
+            else if (counter < 3 && powerup.isSelected() == 0) {
+                powerup.setSelected(1);
+                System.out.println();
+                database.updatePowerUpActive(powerup.getTitle(), powerup.isSelected());
                 counter++;
                 System.out.println(counter);
-                holder.ibPowerupIcon.setImageResource(powerups.get(position).getActivatedImageId());
+                holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
 
             }
             else {

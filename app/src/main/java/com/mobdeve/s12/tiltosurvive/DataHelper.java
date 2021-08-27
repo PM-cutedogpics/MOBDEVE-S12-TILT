@@ -12,23 +12,29 @@ public class DataHelper {
                 "Stampede",
                 "Cattle Driver",
                 "Cow Boy",
-                "A-moo-zing",
-                "Moooooo",
-                "Cow-ard"
+                "Moooooo"
         };
         String[] descriptions = {
                 "Get defeated within 5 seconds",
                 "Kill 100 cows",
                 "Block off 500 cows",
                 "Kill 1000 cows",
-                "Get a score of atleast 10000",
-                "Hit a cow",
-                "Get a score of atleast 1000000"
+                "Hit a cow"
         };
-        for(int i = 0; i < 7; i++) {
+
+        int[] achieved = {
+                0,
+                0,
+                0,
+                0,
+                0
+        };
+
+        for(int i = 0; i < 5; i++) {
             achievements.add(new AchievementModel(
                     titles[i],
-                    descriptions[i]
+                    descriptions[i],
+                    achieved[i]
             ));
         }
         return achievements;
@@ -72,13 +78,22 @@ public class DataHelper {
                 R.drawable.slow_box
         };
 
-        boolean[] isSelected = {
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
+        int[] isSelected = {
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+        };
+
+        int[] owned = {
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
         };
 
         for(int i = 0; i < 6; i++) {
@@ -87,7 +102,8 @@ public class DataHelper {
                     descriptions[i],
                     icons[i],
                     iconsActivated[i],
-                    isSelected[i]
+                    isSelected[i],
+                    owned[i]
             ));
         }
 

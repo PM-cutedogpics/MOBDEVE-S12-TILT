@@ -3,6 +3,7 @@ package com.mobdeve.s12.tiltosurvive;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,9 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull AchievementsViewHolder holder, int position) {
         holder.tvAchievement.setText(String.valueOf(achievements.get(position).getTitle()));
+        if (achievements.get(position).getAchieved() == 1) {
+            holder.tvAchievement.setTextColor(Color.GREEN);
+        }
         holder.tvAchievement.setOnClickListener(v -> {
             Intent intent = new Intent(context, ViewAchievementActivity.class);
             intent.putExtra("title", String.valueOf(achievements.get(position).getTitle()));
