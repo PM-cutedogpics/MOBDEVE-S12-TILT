@@ -219,4 +219,17 @@
         app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_left"
         app:layout_constraintTop_toTopOf="@+id/ibtn_store" />
 
+    <ImageButton
+        android:id="@+id/ib_moo"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:background="@null"
+        android:rotation="40"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/gl_ibtn_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/gl_game_title_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cow" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

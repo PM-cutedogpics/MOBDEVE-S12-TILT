@@ -44,7 +44,7 @@ public class AchievementsAdapter extends RecyclerView.Adapter<AchievementsAdapte
     public void onBindViewHolder(@NonNull @NotNull AchievementsViewHolder holder, int position) {
         holder.tvAchievement.setText(String.valueOf(achievements.get(position).getTitle()));
         if (achievements.get(position).getAchieved() == 1) {
-            holder.tvAchievement.setTextColor(Color.GREEN);
+            holder.tvAchievement.setTextColor(Color.rgb(255, 215, 0));
         }
         holder.tvAchievement.setOnClickListener(v -> {
             Intent intent = new Intent(context, ViewAchievementActivity.class);

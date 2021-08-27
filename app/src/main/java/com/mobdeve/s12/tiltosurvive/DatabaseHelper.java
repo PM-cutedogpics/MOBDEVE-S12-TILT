@@ -149,7 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
                 + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Cow Boy', 'Kill 1000 cows', 0)");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
-                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Moooooo', 'Hit a cow', 0)");
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Moo', 'Hit a cow', 0)");
     }
 
     public Cursor readPowerData() {
@@ -277,7 +277,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public long updateAchievements(String rowId, String name, int achieved) {
+    public Cursor readOneAchievement(String name) {
+        String query = "SELECT * FROM " + TABLE_NAME_ACHIE + " WHERE " + COLUMN_ACHIE_NAME + " = '" + name + "'";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+
+    public long updateAchievements(String name, int achieved) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -285,7 +298,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_ACHIE_NAME, name);
         cv.put(COLUMN_ACHIE_ACHIEVED, achieved);
 
-        long result = db.update(TABLE_NAME_ACHIE, cv, "_id = ?", new String[]{rowId});
+        long result = db.update(TABLE_NAME_ACHIE, cv, COLUMN_ACHIE_NAME + " = ?", new String[]{name});
 
         return result;
     }

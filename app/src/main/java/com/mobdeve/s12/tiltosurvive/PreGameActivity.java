@@ -48,7 +48,7 @@ public class PreGameActivity extends AppCompatActivity {
         this.ibtnBack = findViewById(R.id.btn_pregame_back);
         this.ibtnStart = findViewById(R.id.btn_pregame_confirm);
 
-        this.btnBack.setOnClickListener(v -> {
+        this.ibtnBack.setOnClickListener(v -> {
             this.helper.resetPowerupsActive();
             Intent intent = new Intent(PreGameActivity.this, MainActivity.class);
             startActivity(intent);

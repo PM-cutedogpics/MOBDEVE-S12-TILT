@@ -3,12 +3,19 @@ package com.mobdeve.s12.tiltosurvive;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AchievementModel achievement;
 
     private ImageButton ibtnSettings;
     private ImageButton ibtnStats;
@@ -16,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ibtnStart;
     private ImageButton ibtnStore;
     private ImageButton ibtnInstructions;
+    private ImageButton ibtnMoo;
 
     public static MediaPlayer music;
 
@@ -46,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         this.ibtnStart = findViewById(R.id.ibtn_start);
         this.ibtnStore = findViewById(R.id.ibtn_store);
         this.ibtnInstructions = findViewById(R.id.ibtn_instructions);
+        this.ibtnMoo = findViewById(R.id.ib_moo);
 
         this.ibtnAchievments.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
@@ -73,9 +82,26 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        this.btnInstructions.setOnClickListener(v -> {
+        this.ibtnSettings.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(intent);
+        });
+
+        this.ibtnMoo.setOnClickListener(v -> {
+            Cursor cursor = this.helper.readOneAchievement("Moo");
+            while (cursor.moveToNext()){
+                AchievementModel achievementModel = new AchievementModel(cursor.getString(1), cursor.getString(2), cursor.getInt(3));
+                this.achievement = achievementModel;
+            }
+
+            if (this.achievement.getAchieved() == 0) {
+                this.helper.updateAchievements("Moo", 1);
+                Toast.makeText(this, "You have earned Moo!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                this.helper.updateAchievements("Moo", 0);
+                Toast.makeText(this, "MOOOOO", Toast.LENGTH_SHORT).show();
+            }
         });
 
         this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
