@@ -45,7 +45,6 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
     @Override
     public void onBindViewHolder(@NonNull @NotNull PreGameViewHolder holder, int position) {
         PowerUpsModel powerup = powerups.get(position);
-        System.out.println("SELECTED: " + powerup.isSelected());
         if (powerup.isSelected() == 0) {
             holder.ibPowerupIcon.setImageResource(powerup.getImageId());
         }

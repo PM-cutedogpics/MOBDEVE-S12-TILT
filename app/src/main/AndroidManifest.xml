@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVES12TilttoSurvive">
+        <activity android:name=".HowToPlayActivity"
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".SettingsActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ViewAchievementActivity"
-            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".ViewAchievementActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".PreGameActivity"
             android:screenOrientation="landscape" />
@@ -21,16 +24,17 @@
             android:name=".AchievementsActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".IngameActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".IngameActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".HistoryActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".StoreActivity"
-            android:screenOrientation="landscape"></activity>
-        <activity android:name=".PostGameActivity"
-            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".HistoryActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".StoreActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".PostGameActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
