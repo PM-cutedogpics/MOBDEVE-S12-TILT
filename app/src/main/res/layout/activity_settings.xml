@@ -79,16 +79,16 @@
         app:layout_constraintTop_toTopOf="@+id/tv_settings_music" />
 
     <ImageButton
-        android:id="@+id/btn_settings_back"
+        android:id="@+id/ibtn_instructions_back"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:background="@null"
         android:scaleType="fitXY"
-        android:tint="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/back"
+        app:tint="#FFFFFF" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

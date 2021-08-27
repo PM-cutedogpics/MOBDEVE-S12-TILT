@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        this.ibtnSettings.setOnClickListener(v -> {
+        this.ibtnInstructions.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(intent);
         });

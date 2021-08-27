@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class HowToPlayActivity extends AppCompatActivity {
 
-    private Button btnBack;
+    private ImageButton btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class HowToPlayActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        this.btnBack = findViewById(R.id.btn_instructions_back);
+        this.btnBack = findViewById(R.id.ibtn_instructions_back);
         this.btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(HowToPlayActivity.this, MainActivity.class);
             startActivity(intent);

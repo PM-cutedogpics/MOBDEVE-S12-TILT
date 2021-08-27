@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
@@ -51,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        this.ibtnBack = findViewById(R.id.btn_settings_back);
+        this.ibtnBack = findViewById(R.id.ibtn_instructions_back);
         this.ibtnBack.setOnClickListener(v -> {
             Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
             startActivity(intent);

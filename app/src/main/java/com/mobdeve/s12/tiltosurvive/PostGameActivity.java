@@ -65,6 +65,8 @@ public class PostGameActivity extends AppCompatActivity {
 
         long result = this.helper.addHistory(date, Integer.valueOf(loadTvScore), loadTvTime);
 
+        this.helper.resetPowerupsActive();
+
         this.finishAddGameStats(result);
     }
 
