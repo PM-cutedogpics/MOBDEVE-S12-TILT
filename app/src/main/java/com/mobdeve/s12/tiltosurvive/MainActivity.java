@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         this.ibtnAchievments.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.btnStart.setOnClickListener(v -> {
@@ -70,8 +69,25 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        this.ibtnStats.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
+        });
+
         this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
         this.music.setLooping(true);
         this.music.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        music.start();
     }
 }

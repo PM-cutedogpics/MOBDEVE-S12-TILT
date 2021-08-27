@@ -48,7 +48,9 @@ public class PreGameActivity extends AppCompatActivity {
         });
 
         this.btnStart.setOnClickListener(v -> {
-            Toast.makeText(this, "GAME START", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(PreGameActivity.this, IngameActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
@@ -62,5 +64,17 @@ public class PreGameActivity extends AppCompatActivity {
         this.preGameAdapter = new PreGameAdapter(PreGameActivity.this, PreGameActivity.this, this.powerups);
         this.recyclerView.setAdapter(this.preGameAdapter);
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
     }
 }

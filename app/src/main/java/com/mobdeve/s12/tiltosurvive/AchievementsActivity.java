@@ -57,4 +57,16 @@ public class AchievementsActivity extends AppCompatActivity {
 //
 //
 //    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
+    }
 }

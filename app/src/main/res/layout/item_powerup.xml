@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/eight_bit_wonder"
-        android:text="FREEZE!"
+        android:text="Ka-boom!"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="11sp"

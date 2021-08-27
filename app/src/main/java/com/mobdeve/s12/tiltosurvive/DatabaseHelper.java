@@ -2,8 +2,11 @@ package com.mobdeve.s12.tiltosurvive;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -31,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_STATS_POWERS = "stats_powers";
     private static final String COLUMN_STATS_LONGEST = "stats_longest";
     private static final String COLUMN_STATS_HIGHEST = "stats_highest";
+    private static final String COLUMN_STATS_BALANCE = "stats_balance";
     // Achievements Collection - update
     private static final String TABLE_NAME_ACHIE = "achie_information";
     private static final String COLUMN_ID_ACHIE = "_id";
@@ -43,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_SETTINGS_SFX = "settings_sfx";
 
     public DatabaseHelper(@Nullable Context context) {
-        super (context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
 
@@ -51,9 +55,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String create_query_power =
                 "CREATE TABLE " + TABLE_NAME_POWER + " (" +
-                COLUMN_ID_POWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_POWER_NAME + " TEXT, " +
-                COLUMN_POWER_OWNED + " INTEGER" +
+                        COLUMN_ID_POWER + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        COLUMN_POWER_NAME + " TEXT, " +
+                        COLUMN_POWER_OWNED + " INTEGER" +
                         ");";
 
         String create_query_history =
@@ -71,7 +75,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_STATS_DEATHS + " INTEGER, " +
                         COLUMN_STATS_POWERS + " INTEGER, " +
                         COLUMN_STATS_LONGEST + " TEXT, " +
-                        COLUMN_STATS_HIGHEST + " INTEGER" +
+                        COLUMN_STATS_HIGHEST + " INTEGER, " +
+                        COLUMN_STATS_BALANCE + " INTEGER" +
                         ");";
 
         String create_query_achie =
@@ -93,9 +98,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(create_query_stats);
         sqLiteDatabase.execSQL(create_query_achie);
         sqLiteDatabase.execSQL(create_query_settings);
+
+        // Initialize Default Values for Power-Ups
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(1, 'Freeze', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(2, 'Nuke', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(3, 'Lazer', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(4, 'Force Field', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(5, 'Haste', 0)");
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
+                + COLUMN_POWER_NAME + ", " + COLUMN_POWER_OWNED + ") values(6, 'Speed Down', 0)");
+        // Initialize Default Values for Statistics
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_STATS + "(" +
+                COLUMN_STATS_TIME + ", " + COLUMN_STATS_DEATHS + ", " +
+                COLUMN_STATS_POWERS + ", " + COLUMN_STATS_LONGEST + ", " +
+                COLUMN_STATS_HIGHEST + ", " + COLUMN_STATS_BALANCE + ") " +
+                "values('0:00', 0, 0, '0:00', 0, 1000)");
+
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_HISTORY + "(" +
+                COLUMN_HISTORY_DATE + ", " + COLUMN_HISTORY_SCORE + ", " +
+                COLUMN_HISTORY_TIME + ") " +
+                "values('08/20/21', 9999, '01:10')");
     }
 
-    public long updatePower(String rowId, Boolean owned) {
+    public long updatePower(String rowId, int owned) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -107,16 +137,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public Cursor readHistory() {
+        String query = "SELECT * FROM " + TABLE_NAME_HISTORY;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+
     public long addHistory(String rowId, String date, int score, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_HISTORY_DATE, date);
-        cv.put(COLUMN_HISTORY_SCORE, date);
-        cv.put(COLUMN_HISTORY_TIME, date);
+        cv.put(COLUMN_HISTORY_SCORE, score);
+        cv.put(COLUMN_HISTORY_TIME, score);
 
         long result = db.insert(TABLE_NAME_HISTORY, null, cv);
+
+        return result;
+    }
+
+    public Cursor readStats() {
+        String query = "SELECT * FROM " + TABLE_NAME_STATS;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+
+    public long updateBalance(String rowId, int balance) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_STATS_BALANCE, balance);
+
+        long result = db.update(TABLE_NAME_STATS, cv, "_id = ?", new String[]{rowId});
 
         return result;
     }
@@ -137,7 +205,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public long updateAchie(String rowId, String name, Boolean achieved) {
+    public long updateAchie(String rowId, String name, int achieved) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -150,7 +218,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public long updateSettings(String rowId, Boolean music, Boolean sfx) {
+    public long updateSettings(String rowId, int music, int sfx) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -163,10 +231,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public Cursor readPowerData() {
+        String query = "SELECT * FROM " + TABLE_NAME_POWER;
+        SQLiteDatabase db = this.getReadableDatabase();
 
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //What do do here
+        String upgrade_query = "DROP TABLE IF EXISTS " + TABLE_NAME_POWER;
+        db.execSQL(upgrade_query);
     }
 }

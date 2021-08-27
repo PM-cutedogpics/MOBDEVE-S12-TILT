@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="init_power">
+
+        <item>nuke</item>
+        <item>freeze</item>
+        <item>shield</item>
+        <item>lazer</item>
+        <item>haste</item>
+        <item>speed down</item>
+
+    </string-array>
+</resources>
+
