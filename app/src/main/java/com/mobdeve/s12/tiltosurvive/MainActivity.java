@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ibtnSettings;
     private ImageButton ibtnStats;
     private ImageButton ibtnAchievments;
-    private Button btnStart;
-    private Button btnStore;
-    private Button btnInstructions;
+    private ImageButton ibtnStart;
+    private ImageButton ibtnStore;
+    private ImageButton ibtnInstructions;
 
     public static MediaPlayer music;
 
@@ -44,22 +43,22 @@ public class MainActivity extends AppCompatActivity {
         this.ibtnSettings = findViewById(R.id.ibtn_settings);
         this.ibtnStats = findViewById(R.id.ibtn_stats);
         this.ibtnAchievments = findViewById(R.id.ibtn_achie);
-        this.btnStart = findViewById(R.id.btn_start);
-        this.btnStore = findViewById(R.id.btn_store);
-        this.btnInstructions = findViewById(R.id.btn_instructions);
+        this.ibtnStart = findViewById(R.id.ibtn_start);
+        this.ibtnStore = findViewById(R.id.ibtn_store);
+        this.ibtnInstructions = findViewById(R.id.ibtn_instructions);
 
         this.ibtnAchievments.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
             startActivity(intent);
         });
 
-        this.btnStart.setOnClickListener(v -> {
+        this.ibtnStart.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, PreGameActivity.class);
             startActivity(intent);
             finish();
         });
 
-        this.btnStore.setOnClickListener(v -> {
+        this.ibtnStore.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, StoreActivity.class);
             startActivity(intent);
         });

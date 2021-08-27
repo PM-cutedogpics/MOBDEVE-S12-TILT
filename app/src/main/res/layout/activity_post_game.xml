@@ -4,18 +4,180 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/space_bg_post_game"
     tools:context=".PostGameActivity">
 
-    <Button
-        android:id="@+id/btn_postgame_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_right_panel"
+        android:layout_width="366dp"
+        android:layout_height="411dp"
+        android:background="#99000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gl_icons_end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_stats_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="66dp"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_buttons_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="550dp"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_btns_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="376dp"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_buttons_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="272dp"
+            app:layout_constraintGuide_percent=".6" />
+
+        <ImageButton
+            android:id="@+id/ibtn_home"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="12dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/gl_btns_bottom"
+            app:layout_constraintEnd_toStartOf="@+id/gl_buttons_center"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_buttons_top"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/text_box" />
+
+        <ImageButton
+            android:id="@+id/ibtn_play_again"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/gl_btns_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gl_buttons_center"
+            app:layout_constraintTop_toTopOf="@+id/gl_buttons_top"
+            app:srcCompat="@drawable/text_box" />
+
+        <TextView
+            android:id="@+id/tv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:text="HOME"
+            android:textColor="#000000"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ibtn_home"
+            app:layout_constraintEnd_toEndOf="@+id/ibtn_home"
+            app:layout_constraintStart_toStartOf="@+id/ibtn_home"
+            app:layout_constraintTop_toTopOf="@+id/ibtn_home" />
+
+        <TextView
+            android:id="@+id/tv_play_again"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:gravity="center"
+            android:text="PLAY AGAIN"
+            android:textColor="#000000"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ibtn_play_again"
+            app:layout_constraintEnd_toEndOf="@+id/ibtn_play_again"
+            app:layout_constraintStart_toStartOf="@+id/ibtn_play_again"
+            app:layout_constraintTop_toTopOf="@+id/ibtn_play_again" />
+
+        <TextView
+            android:id="@+id/tv_post_game_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:text="0:12"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_post_game_score_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_post_game_score_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_post_game_score_title" />
+
+        <TextView
+            android:id="@+id/tv_post_game_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:text="9999"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_post_game_title_time"
+            app:layout_constraintStart_toStartOf="@+id/tv_post_game_title_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_post_game_title_time" />
+
+        <TextView
+            android:id="@+id/tv_post_game_title_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:text="SCORE"
+            android:textColor="#FFFFFF"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toTopOf="@+id/gl_buttons_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/gl_buttons_center"
+            app:layout_constraintTop_toTopOf="@+id/gl_stats_top"
+            app:layout_constraintVertical_bias="0.35
+" />
+
+        <TextView
+            android:id="@+id/tv_post_game_score_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:text="TIME"
+            android:textColor="#FFFFFF"
+            android:textSize="23sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/gl_buttons_top"
+            app:layout_constraintEnd_toStartOf="@+id/gl_buttons_center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_stats_top"
+            app:layout_constraintVertical_bias="0.35
+" />
+
+        <TextView
+            android:id="@+id/tv_your_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eight_bit_wonder"
+            android:text="Your Results"
+            android:textColor="#FFFFFF"
+            android:textSize="27sp"
+            app:layout_constraintBottom_toTopOf="@+id/gl_stats_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_icons_start"
@@ -23,94 +185,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="63dp"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_icons_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="354dp"
+        app:layout_constraintGuide_begin="398dp"
         app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_buttons_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="272dp"
-        app:layout_constraintGuide_percent="0.7" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_btns_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="376dp"
-        app:layout_constraintGuide_percent="0.90" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="280dp"
-        android:layout_height="240dp"
-        android:background="#80D6D6D6"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/gl_buttons_top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_icons_end"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/ibtn_retry"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_btns_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_buttons_center"
-        app:layout_constraintStart_toStartOf="@+id/gl_icons_end"
-        app:layout_constraintTop_toTopOf="@+id/gl_buttons_top"
-        app:srcCompat="@drawable/text_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_quit"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_btns_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/gl_buttons_center"
-        app:layout_constraintTop_toTopOf="@+id/gl_buttons_top"
-        app:srcCompat="@drawable/text_box" />
-
-    <ImageView
-        android:id="@+id/iv_cow"
-        android:layout_width="154dp"
-        android:layout_height="0dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_icons_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_icons_end"
-        app:layout_constraintTop_toTopOf="@+id/gl_icons_top"
-        app:layout_constraintVertical_bias="0.928"
-        app:srcCompat="@drawable/cow" />
-
-    <ImageView
-        android:id="@+id/iv_spaceship"
-        android:layout_width="122dp"
-        android:layout_height="0dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_icons_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/iv_cow"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/gl_icons_start"
-        app:layout_constraintTop_toTopOf="@+id/gl_icons_top"
-        app:layout_constraintVertical_bias="0.73"
-        app:srcCompat="@drawable/spaceship" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_icons_top"
@@ -118,21 +201,30 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="66dp"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_icons_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="199dp"
         app:layout_constraintGuide_percent="0.5" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_buttons_center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="550dp"
-        app:layout_constraintGuide_percent="0.75" />
+    <ImageView
+        android:id="@+id/iv_cow"
+        android:layout_width="154dp"
+        android:layout_height="123dp"
+        android:rotation="45"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/gl_icons_end"
+        app:layout_constraintStart_toStartOf="@+id/gl_icons_start"
+        app:layout_constraintTop_toTopOf="@+id/gl_icons_top"
+        app:srcCompat="@drawable/cow" />
+
+    <ImageView
+        android:id="@+id/iv_spaceship"
+        android:layout_width="122dp"
+        android:layout_height="123dp"
+        android:rotation="-35"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/gl_icons_top"
+        app:layout_constraintEnd_toStartOf="@+id/gl_icons_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/spaceship" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,14 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class PreGameActivity extends AppCompatActivity {
 
-    private Button btnBack;
-    private Button btnStart;
+    private ImageButton ibtnBack;
+    private ImageButton ibtnStart;
 
     private RecyclerView recyclerView;
     private PreGameAdapter preGameAdapter;
@@ -38,16 +39,16 @@ public class PreGameActivity extends AppCompatActivity {
 
         this.initRecyclerView();
 
-        this.btnBack = findViewById(R.id.btn_pregame_back);
-        this.btnStart = findViewById(R.id.btn_pregame_confirm);
+        this.ibtnBack = findViewById(R.id.btn_pregame_back);
+        this.ibtnStart = findViewById(R.id.btn_pregame_confirm);
 
-        this.btnBack.setOnClickListener(v -> {
+        this.ibtnBack.setOnClickListener(v -> {
             Intent intent = new Intent(PreGameActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         });
 
-        this.btnStart.setOnClickListener(v -> {
+        this.ibtnStart.setOnClickListener(v -> {
             Intent intent = new Intent(PreGameActivity.this, IngameActivity.class);
             startActivity(intent);
             finish();

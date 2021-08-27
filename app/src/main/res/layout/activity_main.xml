@@ -4,44 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/space_bg"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_store"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_store"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/btn_start" />
-
-    <Button
-        android:id="@+id/btn_start"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_start"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/guideline16" />
-
-    <Button
-        android:id="@+id/btn_instructions"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_instructions"
-        android:textSize="19sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toBottomOf="@+id/btn_store" />
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline6"
+        android:id="@+id/gl_podium_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -49,7 +16,7 @@
         app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
+        android:id="@+id/gl_home_buttons_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -57,7 +24,7 @@
         app:layout_constraintGuide_percent="0.68" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
+        android:id="@+id/gl_ibtn_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -65,7 +32,7 @@
         app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
+        android:id="@+id/gl_settings_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -73,15 +40,15 @@
         app:layout_constraintGuide_percent="0.79" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
+        android:id="@+id/gl_game_title_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="178dp"
-        app:layout_constraintGuide_percent="0.21" />
+        app:layout_constraintGuide_percent="0.11" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
+        android:id="@+id/gl_home_buttons_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -89,20 +56,21 @@
         app:layout_constraintGuide_percent="0.32" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_game_title"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:gravity="center"
         android:text="@string/tv_title"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline15"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toTopOf="@+id/guideline14" />
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/gl_game_title_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/gl_podium_right"
+        app:layout_constraintStart_toStartOf="@+id/gl_game_title_start"
+        app:layout_constraintTop_toTopOf="@+id/gl_game_title_top" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline14"
+        android:id="@+id/gl_game_title_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -110,20 +78,20 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline15"
+        android:id="@+id/gl_game_title_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="199dp"
+        app:layout_constraintGuide_begin="294dp"
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline16"
+        android:id="@+id/gl_home_buttons_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="249dp"
-        app:layout_constraintGuide_percent=".57" />
+        app:layout_constraintGuide_percent=".56" />
 
     <ImageButton
         android:id="@+id/ibtn_achie"
@@ -135,9 +103,9 @@
         android:paddingEnd="5dp"
         android:paddingBottom="10dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintBottom_toTopOf="@+id/gl_ibtn_bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/gl_podium_right"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/trophy" />
 
@@ -150,9 +118,9 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintBottom_toTopOf="@+id/gl_ibtn_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/gl_podium_right"
+        app:layout_constraintStart_toStartOf="@+id/gl_settings_right"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/podium" />
 
@@ -166,10 +134,89 @@
         android:paddingEnd="5dp"
         android:paddingBottom="10dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintBottom_toTopOf="@+id/gl_ibtn_bottom"
+        app:layout_constraintEnd_toStartOf="@+id/gl_settings_right"
+        app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_right"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gear" />
+
+    <ImageButton
+        android:id="@+id/ibtn_start"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/gl_home_buttons_right"
+        app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_left"
+        app:layout_constraintTop_toTopOf="@+id/gl_home_buttons_top"
+        app:srcCompat="@drawable/text_box" />
+
+    <ImageButton
+        android:id="@+id/ibtn_store"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/gl_home_buttons_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_left"
+        app:layout_constraintTop_toBottomOf="@+id/ibtn_start"
+        app:srcCompat="@drawable/text_box" />
+
+    <ImageButton
+        android:id="@+id/ibtn_instructions"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/gl_home_buttons_right"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_left"
+        app:layout_constraintTop_toBottomOf="@+id/ibtn_store"
+        app:srcCompat="@drawable/text_box" />
+
+    <TextView
+        android:id="@+id/tv_how_to_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:gravity="center"
+        android:text="HOW TO PLAY"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibtn_instructions"
+        app:layout_constraintEnd_toStartOf="@+id/gl_home_buttons_right"
+        app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_left"
+        app:layout_constraintTop_toTopOf="@+id/ibtn_instructions" />
+
+    <TextView
+        android:id="@+id/tv_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:gravity="center"
+        android:text="START"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibtn_start"
+        app:layout_constraintEnd_toEndOf="@+id/ibtn_start"
+        app:layout_constraintStart_toStartOf="@+id/ibtn_start"
+        app:layout_constraintTop_toTopOf="@+id/ibtn_start" />
+
+    <TextView
+        android:id="@+id/tv_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:gravity="center"
+        android:text="STORE"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ibtn_store"
+        app:layout_constraintEnd_toStartOf="@+id/gl_home_buttons_right"
+        app:layout_constraintStart_toStartOf="@+id/gl_home_buttons_left"
+        app:layout_constraintTop_toTopOf="@+id/ibtn_store" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

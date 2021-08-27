@@ -2,6 +2,7 @@ package com.mobdeve.s12.tiltosurvive;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class StoreActivity extends AppCompatActivity {
     private ImageButton ibtnForceField;
     private ImageButton ibtnHaste;
     private ImageButton ibtnSpeedDown;
+    private ImageButton ibtnBack;
 
     private TextView tvPriceFreeze;
     private TextView tvPriceNuke;
@@ -228,6 +230,13 @@ public class StoreActivity extends AppCompatActivity {
                 }
             });
         }
+
+        this.ibtnBack = findViewById(R.id.ibtn_store_back);
+        this.ibtnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(StoreActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void finishUpdateStore(long result) {

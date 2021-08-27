@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MOBDEVE-S12-Tilt-to-Survive</string>
+    <string name="app_name">Tilt To Survive</string>
     <string name="tv_freeze">450</string>
     <string name="tv_nuke">500</string>
     <string name="tv_laser">450</string>

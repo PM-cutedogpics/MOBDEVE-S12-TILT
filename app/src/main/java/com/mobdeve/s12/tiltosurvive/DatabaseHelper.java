@@ -122,7 +122,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_HISTORY + "(" +
                 COLUMN_HISTORY_DATE + ", " + COLUMN_HISTORY_SCORE + ", " +
                 COLUMN_HISTORY_TIME + ") " +
-                "values('08/20/21', 9999, '01:10')");
+                "values('Aug 20, 2021', 9999, '01:10')");
+
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_HISTORY + "(" +
+                COLUMN_HISTORY_DATE + ", " + COLUMN_HISTORY_SCORE + ", " +
+                COLUMN_HISTORY_TIME + ") " +
+                "values('Aug 21, 2021', 9999, '01:10')");
     }
 
     public long updatePower(String rowId, int owned) {
@@ -150,14 +155,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public long addHistory(String rowId, String date, int score, String time) {
+    public long addHistory(String date, int score, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_HISTORY_DATE, date);
         cv.put(COLUMN_HISTORY_SCORE, score);
-        cv.put(COLUMN_HISTORY_TIME, score);
+        cv.put(COLUMN_HISTORY_TIME, time);
 
         long result = db.insert(TABLE_NAME_HISTORY, null, cv);
 

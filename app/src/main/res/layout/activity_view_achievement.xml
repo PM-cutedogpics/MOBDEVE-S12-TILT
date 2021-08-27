@@ -4,7 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/space_bg"
     tools:context=".ViewAchievementActivity">
+
+    <ImageButton
+        android:id="@+id/ibtn_achievements_back"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back"
+        app:tint="#FFFFFF" />
 
     <TextView
         android:id="@+id/tv_va_title"
@@ -13,7 +27,7 @@
         android:layout_marginTop="80dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="TITLE"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,19 +41,10 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="DESCRIPTION"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_va_title"
         app:layout_constraintStart_toStartOf="@+id/tv_va_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_va_title" />
 
-    <Button
-        android:id="@+id/btn_va_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

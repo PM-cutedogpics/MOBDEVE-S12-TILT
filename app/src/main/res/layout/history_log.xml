@@ -11,7 +11,8 @@
         android:layout_weight="1"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="08/21/21"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tv_history_score"
@@ -20,7 +21,8 @@
         android:layout_weight="1"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="9999"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/tv_history_time"
@@ -29,5 +31,6 @@
         android:layout_weight="1"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="23:00"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
 </LinearLayout>

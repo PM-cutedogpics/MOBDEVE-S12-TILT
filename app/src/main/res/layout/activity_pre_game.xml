@@ -4,7 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/space_bg_post_game"
     tools:context=".PreGameActivity">
+
+    <ImageButton
+        android:id="@+id/btn_pregame_confirm"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/text_box" />
+
+    <ImageButton
+        android:id="@+id/btn_pregame_back"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:tint="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+    <TextView
+        android:id="@+id/tv_play_again2"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:gravity="center"
+        android:text="CONFIRM"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_pregame_confirm"
+        app:layout_constraintEnd_toEndOf="@+id/btn_pregame_confirm"
+        app:layout_constraintStart_toStartOf="@+id/btn_pregame_confirm"
+        app:layout_constraintTop_toTopOf="@+id/btn_pregame_confirm" />
 
     <TextView
         android:id="@+id/tv_pregame_label"
@@ -13,8 +53,8 @@
         android:fontFamily="@font/eight_bit_wonder"
         android:text="Select 3 Power-ups"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="26sp"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -27,26 +67,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15" />
 
-    <Button
-        android:id="@+id/btn_pregame_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Back"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btn_pregame_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="Confirm"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_pregame"
         android:layout_width="500dp"
@@ -55,5 +75,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_pregame_label" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_pregame_label" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>
