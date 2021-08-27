@@ -62,9 +62,8 @@ public class HistoryActivity extends AppCompatActivity {
         this.helper = new DatabaseHelper(HistoryActivity.this);
         Cursor cursor = this.helper.readHistory();
         while (cursor.moveToNext()){
-            HistoryModel newHistory = new HistoryModel(cursor.getString(1), cursor.getString(3), cursor.getInt(2));
+            HistoryModel newHistory = new HistoryModel(cursor.getString(3), cursor.getString(1), cursor.getInt(2));
             this.history.add(newHistory);
-            Log.d("HELPPP", "HELPPPPPP");
         }
         this.recyclerView = findViewById(R.id.rv_history);
         this.historyAdapter = new HistoryAdapter(HistoryActivity.this, HistoryActivity.this, this.history);
