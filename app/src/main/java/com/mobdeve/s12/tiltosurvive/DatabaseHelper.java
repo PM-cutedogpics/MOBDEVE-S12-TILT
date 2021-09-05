@@ -24,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_POWER_OWNED = "power_owned";
     private static final String COLUMN_POWER_ICON = "power_icon";
     private static final String COLUMN_POWER_ICON_ACTIVATED = "power_icon_activated";
+    private static final String COLUMN_POWER_PRICE = "power_price";
     // History Collection - add
     private static final String TABLE_NAME_HISTORY = "history_information";
     private static final String COLUMN_ID_HISTORY = "_id";
@@ -66,7 +67,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_POWER_SELECTED + " INTEGER," +
                         COLUMN_POWER_OWNED + " INTEGER, " +
                         COLUMN_POWER_ICON + " TEXT, " +
-                        COLUMN_POWER_ICON_ACTIVATED + " TEXT" +
+                        COLUMN_POWER_ICON_ACTIVATED + " TEXT, " +
+                        COLUMN_POWER_PRICE + " TEXT" +
                         ");";
 
         String create_query_history =
@@ -112,22 +114,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Initialize Default Values for Power-Ups
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
-                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(1, 'Freeze', 'Freeze cows around the spaceship.', 0, 0, 'freeze_box_grey', 'freeze_box')");
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
+                + ") values(1, 'Freeze', 'Freeze cows around the spaceship.', 0, 0, 'freeze_box_grey', 'freeze_box', '500')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
-                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(2, 'Nuke', 'Nukes around the spaceship.', 0, 0, 'nuke_box_grey', 'nuke_box')");
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
+                + ") values(2, 'Nuke', 'Nukes around the spaceship.', 0, 0, 'nuke_box_grey', 'nuke_box', '500')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
-                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(3, 'Laser', 'Shoots a laser depending on where the spaceship is aimed at.', 0, 0, 'laser_box_grey', 'laser_box')");
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
+                + ") values(3, 'Laser', 'Shoots a laser depending on where the spaceship is aimed at.', 0, 0, 'laser_box_grey', 'laser_box', '500')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
-                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(4, 'Force Field', 'Gains a shield for 10 seconds.', 0, 0, 'force_field_box_grey', 'force_field_box')");
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
+                + ") values(4, 'Force Field', 'Gains a shield for 10 seconds.', 0, 0, 'force_field_box_grey', 'force_field_box', '400')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
-                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(5, 'Haste', 'Increases speed of the spaceship for 5 seconds.', 0, 0, 'haste_box_grey', 'haste_box')");
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
+                + ") values(5, 'Haste', 'Increases speed of the spaceship for 5 seconds.', 0, 0, 'haste_box_grey', 'haste_box', '350')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
-                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ") values(6, 'Speed Down', 'Slows cows down for 5 seconds.', 0, 0, 'slow_box_grey', 'slow_box')");
+                + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
+                + ") values(6, 'Speed Down', 'Slows cows down for 5 seconds.', 0, 0, 'slow_box_grey', 'slow_box', '350')");
         // Initialize Default Values for Statistics
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_STATS + "(" +
                 COLUMN_STATS_TIME + ", " + COLUMN_STATS_DEATHS + ", " +
@@ -140,7 +148,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_HISTORY_TIME + ") " +
                 "values('08/20/21', 9999, '01:10')");
 
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
+        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE +
+                "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
                 + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Utter Defeat', 'Get defeated within 5 seconds', 0)");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
                 + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Stampede', 'Kill 100 cows', 0)");
@@ -165,14 +174,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public long updatePower(String rowId, int owned) {
+    public long updatePowerupOwned(String powerupName, int isOwned) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_POWER_OWNED, owned);
+        cv.put(COLUMN_POWER_OWNED, isOwned);
 
-        long result = db.update(TABLE_NAME_POWER, cv, "_id = ?", new String[]{rowId});
+        long result = db.update(TABLE_NAME_POWER, cv, COLUMN_POWER_NAME + " = ?", new String[]{powerupName});
 
         return result;
     }
@@ -185,7 +194,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_POWER_SELECTED, isSelected);
 
         long result = db.update(TABLE_NAME_POWER, cv, COLUMN_POWER_NAME + " = ?", new String[]{powerupName});
-
 
         return result;
     }

@@ -60,11 +60,9 @@ public class PreGameActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-
     }
 
     private void initRecyclerView() {
-
         this.recyclerView = findViewById(R.id.rv_pregame);
 
         this.recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
@@ -77,13 +75,12 @@ public class PreGameActivity extends AppCompatActivity {
             int iconActivated = getApplicationContext().getResources().getIdentifier(cursor.getString(6).trim(), "drawable",getApplicationContext().getPackageName());
 
             //                                                                                    title, desc, imageid, activated, isSelected, owned
-            PowerUpsModel powerUpsModel = new PowerUpsModel(cursor.getString(1), cursor.getString(2), icon, iconActivated, cursor.getInt(3), cursor.getInt(4));
+            PowerUpsModel powerUpsModel = new PowerUpsModel(cursor.getString(1), cursor.getString(2), icon, iconActivated, cursor.getInt(3), cursor.getInt(4), cursor.getInt(4));
             this.powerups.add(powerUpsModel);
         }
 
         this.preGameAdapter = new PreGameAdapter(PreGameActivity.this, PreGameActivity.this, this.helper, this.powerups);
         this.recyclerView.setAdapter(this.preGameAdapter);
-
     }
 
     @Override
