@@ -8,17 +8,16 @@ public class PowerUpsModel {
     private int imageId;
     private int activatedImageId;
     private int isSelected;
-    private int isOwned;
-    private int price;
+    private int owned;
 
-    public PowerUpsModel(String title, String description, int imageId, int activatedImageId, int isSelected, int isOwned, int price) {
+    public PowerUpsModel(String title, String description, int imageId, int activatedImageId, int isSelected, int owned) {
         this.title = title;
         this.description = description;
         this.imageId = imageId;
         this.activatedImageId = activatedImageId;
         this.isSelected = isSelected;
-        this.isOwned = isOwned;
-        this.price = price;
+        this.owned = owned;
+
     }
 
     public String getTitle() {
@@ -46,21 +45,13 @@ public class PowerUpsModel {
     }
 
     public Integer getOwned() {
-        return isOwned;
+        return owned;
     }
 
-    public void setOwned(Integer isOwned) {
-        this.isOwned = isOwned;
+    public void setOwned(Integer owned) {
+        this.owned = owned;
     }
 
     public int getSelected() { return this.isSelected;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 }

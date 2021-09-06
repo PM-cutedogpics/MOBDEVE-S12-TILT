@@ -87,22 +87,13 @@ public class DataHelper {
                 0,
         };
 
-        int[] isOwned = {
+        int[] owned = {
                 0,
                 0,
                 0,
                 0,
                 0,
                 0
-        };
-
-        int[] price = {
-                500,
-                500,
-                500,
-                400,
-                350,
-                350
         };
 
         for(int i = 0; i < 6; i++) {
@@ -112,8 +103,7 @@ public class DataHelper {
                     icons[i],
                     iconsActivated[i],
                     isSelected[i],
-                    isOwned[i],
-                    price[i]
+                    owned[i]
             ));
         }
 
