@@ -2,6 +2,7 @@ package com.mobdeve.s12.tiltosurvive;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,9 +50,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     public void onBindViewHolder(@NonNull @NotNull StoreViewHolder holder, int position) {
         PowerUpsModel powerup = powerups.get(position);
         holder.tvPowerupName.setText(powerup.getTitle());
+        holder.tvPowerupDesc.setText(powerup.getDescription());
         if (powerup.getOwned() == 1) {
             holder.ibPowerupIcon.setImageResource(powerup.getImageId());
             holder.tvPowerupPrice.setText("SOLD");
+            holder.tvPowerupPrice.setTextColor(Color.GRAY);
             holder.ibPowerupIcon.setEnabled(false);
         }
         else {
@@ -61,12 +64,13 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
         holder.ibPowerupIcon.setOnClickListener(v -> {
             this.balance =  Integer.parseInt(tvBalance.getText().toString());
-            if (this.balance > powerup.getPrice()) {
+            if (this.balance >= powerup.getPrice()) {
                 this.balance = Integer.parseInt(tvBalance.getText().toString()) -
                         Integer.parseInt(holder.tvPowerupPrice.getText().toString());
                 this.database.updateBalance("1", this.balance);
                 this.database.updatePowerupOwned(powerup.getTitle(), 1);
                 this.tvBalance.setText(String.valueOf(balance));
+                holder.tvPowerupPrice.setTextColor(Color.GRAY);
                 holder.tvPowerupPrice.setText("SOLD");
                 holder.ibPowerupIcon.setImageResource(powerup.getImageId());
                 holder.ibPowerupIcon.setEnabled(false);
@@ -87,13 +91,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         ImageButton ibPowerupIcon;
         TextView tvPowerupName;
         TextView tvPowerupPrice;
-
-//        TextView tvDialogPowerupDName;
-//        ImageView ivDialogPowerupIcon;
-//        TextView tvDialogPowerupDesc;
-//        ImageButton ibDialogPowerupIcon;
-//        TextView tvDialogPowerupPrice;
-
+        TextView tvPowerupDesc;
 
         public StoreViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);
@@ -101,12 +99,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             this.ibPowerupIcon = itemView.findViewById(R.id.ib_store_powerup);
             this.tvPowerupName = itemView.findViewById(R.id.tv_store_powerup_name);
             this.tvPowerupPrice = itemView.findViewById(R.id.tv_store_powerup_price);
-
-//            this.tvDialogPowerupDName = itemView.findViewById(R.id.tv_store_dialog_powerup);
-//            this.ivDialogPowerupIcon = itemView.findViewById(R.id.iv_store_dialog_powerup);
-//            this.tvDialogPowerupDesc = itemView.findViewById(R.id.tv_store_dialog_powerup_desc);
-//            this.ibDialogPowerupIcon = itemView.findViewById(R.id.ib_store_dialog_buy);
-//            this.tvDialogPowerupPrice = itemView.findViewById(R.id.tv_store_dialog_price);
+            this.tvPowerupDesc = itemView.findViewById(R.id.tv_store_powerup_description);
         }
     }
 }

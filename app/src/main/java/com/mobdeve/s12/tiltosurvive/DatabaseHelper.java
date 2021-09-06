@@ -34,10 +34,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Overall Statistics Collection - update
     private static final String TABLE_NAME_STATS = "stats_information";
     private static final String COLUMN_ID_STATS = "_id";
-    private static final String COLUMN_STATS_TIME = "stats_time";           // Total play time
-    private static final String COLUMN_STATS_DEATHS = "stats_deaths";
-    private static final String COLUMN_STATS_POWERS = "stats_powers";
-    private static final String COLUMN_STATS_LONGEST = "stats_longest";
     private static final String COLUMN_STATS_HIGHEST = "stats_highest";
     private static final String COLUMN_STATS_BALANCE = "stats_balance";
     // Achievements Collection - update
@@ -82,10 +78,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String create_query_stats =
                 "CREATE TABLE " + TABLE_NAME_STATS + " (" +
                         COLUMN_ID_STATS + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        COLUMN_STATS_TIME + " TEXT, " +
-                        COLUMN_STATS_DEATHS + " INTEGER, " +
-                        COLUMN_STATS_POWERS + " INTEGER, " +
-                        COLUMN_STATS_LONGEST + " TEXT, " +
                         COLUMN_STATS_HIGHEST + " INTEGER, " +
                         COLUMN_STATS_BALANCE + " INTEGER" +
                         ");";
@@ -138,10 +130,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + ") values(6, 'Speed Down', 'Slows cows down for 5 seconds.', 0, 0, 'slow_box_grey', 'slow_box', '350')");
         // Initialize Default Values for Statistics
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_STATS + "(" +
-                COLUMN_STATS_TIME + ", " + COLUMN_STATS_DEATHS + ", " +
-                COLUMN_STATS_POWERS + ", " + COLUMN_STATS_LONGEST + ", " +
                 COLUMN_STATS_HIGHEST + ", " + COLUMN_STATS_BALANCE + ") " +
-                "values('0:00', 0, 0, '0:00', 0, 1000)");
+                "values(0, 1000)");
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_HISTORY + "(" +
                 COLUMN_HISTORY_DATE + ", " + COLUMN_HISTORY_SCORE + ", " +
@@ -261,10 +251,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_STATS_TIME, time);
-        cv.put(COLUMN_STATS_DEATHS, deaths);
-        cv.put(COLUMN_STATS_POWERS, powers);
-        cv.put(COLUMN_STATS_LONGEST, longest);
         cv.put(COLUMN_STATS_HIGHEST, highest);
 
         long result = db.update(TABLE_NAME_STATS, cv, "_id = ?", new String[]{rowId});

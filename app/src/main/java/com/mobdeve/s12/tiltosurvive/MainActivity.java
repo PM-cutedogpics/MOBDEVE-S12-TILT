@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton ibtnStore;
     private ImageButton ibtnInstructions;
     private ImageButton ibtnMoo;
+    private ProgressBar pbMain;
 
     public static MediaPlayer music;
 
@@ -55,34 +57,40 @@ public class MainActivity extends AppCompatActivity {
         this.ibtnStore = findViewById(R.id.ibtn_store);
         this.ibtnInstructions = findViewById(R.id.ibtn_instructions);
         this.ibtnMoo = findViewById(R.id.ib_moo);
+        this.pbMain = findViewById(R.id.pb_main);
 
         this.ibtnAchievments.setOnClickListener(v -> {
+            this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, AchievementsActivity.class);
             startActivity(intent);
         });
 
         this.ibtnStart.setOnClickListener(v -> {
+            this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, PreGameActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.ibtnStore.setOnClickListener(v -> {
+            this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, StoreActivity.class);
             startActivity(intent);
         });
 
         this.ibtnSettings.setOnClickListener(v -> {
+            this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         });
 
         this.ibtnStats.setOnClickListener(v -> {
+            this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             startActivity(intent);
         });
 
         this.ibtnInstructions.setOnClickListener(v -> {
+            this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(intent);
         });
@@ -112,12 +120,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        music.pause();
+        this.music.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        music.start();
+        this.music.start();
+        this.pbMain.setVisibility(View.GONE);
     }
 }

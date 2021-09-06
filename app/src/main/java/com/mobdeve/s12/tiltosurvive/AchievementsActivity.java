@@ -58,6 +58,7 @@ public class AchievementsActivity extends AppCompatActivity {
         this.achievementsAdapter = new AchievementsAdapter(AchievementsActivity.this, AchievementsActivity.this, this.achievements);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         this.recyclerView.setAdapter(this.achievementsAdapter);
+        this.helper.close();
     }
 
     @Override

@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_top" />
+        app:layout_constraintTop_toTopOf="@+id/gl_title_bottom" />
 
     <ImageButton
         android:id="@+id/ibtn_store_back"
@@ -47,14 +47,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="62dp"
         app:layout_constraintGuide_percent="0.20" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_first_row_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="54dp"
-        app:layout_constraintGuide_percent="0.24" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_first_col_right"

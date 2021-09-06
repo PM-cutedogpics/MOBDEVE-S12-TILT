@@ -27,7 +27,6 @@ public class StoreActivity extends AppCompatActivity {
 
     private DatabaseHelper helper;
 
-    private PowerUps powerUps;
     private int balance;
 
     @Override
@@ -50,12 +49,10 @@ public class StoreActivity extends AppCompatActivity {
     private void initComponents() {
         this.tvBalance = findViewById(R.id.tv_balance);
 
-        this.powerUps = new PowerUps();
-
         this.helper = new DatabaseHelper(StoreActivity.this);
         Cursor cursor = this.helper.readStats();
         while (cursor.moveToNext()) {
-            this.balance = (cursor.getInt(6));
+            this.balance = (cursor.getInt(2));
         }
 
         this.tvBalance.setText(String.valueOf(this.balance));
@@ -91,6 +88,7 @@ public class StoreActivity extends AppCompatActivity {
         }
         this.storeAdapter = new StoreAdapter(StoreActivity.this, StoreActivity.this, this.helper, this.powerups, this.tvBalance);
         this.recyclerView.setAdapter(this.storeAdapter);
+        this.helper.close();
     }
 
     private void finishUpdateStore(long result) {
@@ -134,5 +132,6 @@ public class StoreActivity extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
+        MainActivity.music.pause();
     }
 }

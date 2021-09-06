@@ -53,7 +53,7 @@ public class HistoryActivity extends AppCompatActivity {
         this.historyHighscore = findViewById(R.id.tv_history_highscore);
         Cursor cursor = this.helper.readStats();
         while (cursor.moveToNext()) {
-            this.historyHighscore.setText("HIGHSCORE: " + cursor.getInt(5));
+            this.historyHighscore.setText("HIGHSCORE: " + cursor.getInt(1));
         }
     }
 
@@ -69,6 +69,7 @@ public class HistoryActivity extends AppCompatActivity {
         this.historyAdapter = new HistoryAdapter(HistoryActivity.this, HistoryActivity.this, this.history);
         this.recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         this.recyclerView.setAdapter(this.historyAdapter);
+        this.helper.close();
     }
 
     @Override

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import static com.mobdeve.s12.tiltosurvive.MainActivity.music;
+
 public class HowToPlayActivity extends AppCompatActivity {
 
     private ImageButton btnBack;
@@ -31,5 +33,17 @@ public class HowToPlayActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MainActivity.music.pause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivity.music.start();
     }
 }

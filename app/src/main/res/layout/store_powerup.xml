@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="20dp">
+    android:paddingBottom="8dp">
 
     <TextView
         android:id="@+id/tv_store_powerup_name"
@@ -29,7 +29,21 @@
         android:text="200"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="17sp"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/tv_store_powerup_description"
+        app:layout_constraintStart_toStartOf="@+id/tv_store_powerup_description"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_powerup_description" />
+
+    <TextView
+        android:id="@+id/tv_store_powerup_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:text="200"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="@+id/ib_store_powerup"
         app:layout_constraintStart_toStartOf="@+id/ib_store_powerup"
