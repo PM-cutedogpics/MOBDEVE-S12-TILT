@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="20dp">
+
+    <TextView
+        android:id="@+id/tv_store_powerup_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:text="Ka-boom!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="21sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_store_powerup_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:text="200"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/ib_store_powerup"
+        app:layout_constraintStart_toStartOf="@+id/ib_store_powerup"
+        app:layout_constraintTop_toBottomOf="@+id/ib_store_powerup" />
+
+    <ImageButton
+        android:id="@+id/ib_store_powerup"
+        android:layout_width="109dp"
+        android:layout_height="100dp"
+        android:background="@null"
+        android:clickable="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="@+id/tv_store_powerup_name"
+        app:layout_constraintStart_toStartOf="@+id/tv_store_powerup_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_powerup_name"
+        app:srcCompat="@drawable/slow_box_grey" />
+</androidx.constraintlayout.widget.ConstraintLayout>

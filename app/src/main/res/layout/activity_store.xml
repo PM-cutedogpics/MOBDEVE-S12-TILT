@@ -7,6 +7,18 @@
     android:background="@drawable/space_bg"
     tools:context=".StoreActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_store_powerup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gl_first_row_top" />
+
     <ImageButton
         android:id="@+id/ibtn_store_back"
         android:layout_width="80dp"
@@ -26,7 +38,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="28dp"
-        app:layout_constraintGuide_percent="0.04" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_title_bottom"
@@ -34,7 +46,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="62dp"
-        app:layout_constraintGuide_percent="0.16" />
+        app:layout_constraintGuide_percent="0.20" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_first_row_top"
@@ -42,39 +54,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="54dp"
-        app:layout_constraintGuide_percent="0.20" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_first_row_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="209dp"
-        app:layout_constraintGuide_percent="0.50" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_second_row_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="267dp"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_second_row_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="360dp"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_first_col_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="68dp"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.24" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_first_col_right"
@@ -85,202 +65,12 @@
         app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_second_col_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="294dp"
-        app:layout_constraintGuide_percent="0.4" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_second_col_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="421dp"
-        app:layout_constraintGuide_percent="0.6" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_third_col_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="539dp"
         app:layout_constraintGuide_percent="0.7" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_third_col_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="641dp"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <ImageButton
-        android:id="@+id/ibtn_speed_up"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_first_row_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_third_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_third_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_top"
-        app:srcCompat="@drawable/haste_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_speed_down"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_second_row_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_third_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_third_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_second_row_top"
-        app:srcCompat="@drawable/slow_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_freeze"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_first_row_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_first_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_first_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_top"
-        app:srcCompat="@drawable/freeze_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_nuke"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_second_row_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_first_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_first_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_second_row_top"
-        app:srcCompat="@drawable/nuke_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_lazer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_first_row_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_second_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_second_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_top"
-        app:srcCompat="@drawable/laser_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_shield"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/gl_second_row_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_second_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_second_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_second_row_top"
-        app:srcCompat="@drawable/force_field_box" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_second_price_below"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="384dp"
-        app:layout_constraintGuide_percent="0.95" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gl_first_price_below"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="233dp"
-        app:layout_constraintGuide_percent="0.55" />
-
-    <TextView
-        android:id="@+id/tv_price_freeze"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_freeze"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_first_price_below"
-        app:layout_constraintEnd_toStartOf="@+id/gl_first_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_first_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_bottom" />
-
-    <TextView
-        android:id="@+id/tv_price_nuke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_nuke"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_second_price_below"
-        app:layout_constraintEnd_toStartOf="@+id/gl_first_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_first_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_second_row_bottom" />
-
-    <TextView
-        android:id="@+id/tv_price_shield"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_force_field"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_second_price_below"
-        app:layout_constraintEnd_toStartOf="@+id/gl_second_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_second_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_second_row_bottom" />
-
-    <TextView
-        android:id="@+id/tv_price_speed_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_haste"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_first_price_below"
-        app:layout_constraintEnd_toStartOf="@+id/gl_third_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_third_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_bottom" />
-
-    <TextView
-        android:id="@+id/tv_price_speed_down"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_slow"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_second_price_below"
-        app:layout_constraintEnd_toStartOf="@+id/gl_third_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_third_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_second_row_bottom" />
-
-    <TextView
-        android:id="@+id/tv_price_lazer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:text="@string/tv_laser"
-        android:textColor="#9C27B0"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/gl_first_price_below"
-        app:layout_constraintEnd_toStartOf="@+id/gl_second_col_right"
-        app:layout_constraintStart_toStartOf="@+id/gl_second_col_left"
-        app:layout_constraintTop_toTopOf="@+id/gl_first_row_bottom" />
 
     <TextView
         android:id="@+id/tv_store_name"
@@ -310,7 +100,7 @@
         android:text="@string/tv_balance"
         android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/gl_title_bottom"
-        app:layout_constraintEnd_toStartOf="@+id/gl_third_col_right"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/gl_third_col_left"
         app:layout_constraintTop_toTopOf="@+id/gl_title_top" />
 

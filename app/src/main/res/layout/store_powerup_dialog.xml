@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tv_store_dialog_powerup"
+        android:layout_width="74dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:text="Ka-boom!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_store_dialog_powerup_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:text="200"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_store_dialog_powerup" />
+
+    <ImageView
+        android:id="@+id/iv_store_dialog_powerup"
+        android:layout_width="131dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_dialog_powerup"
+        app:srcCompat="@drawable/slow_box_grey" />
+
+    <ImageButton
+        android:id="@+id/ib_store_dialog_buy"
+        android:layout_width="87dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_store_dialog_powerup_desc"
+        app:srcCompat="@drawable/text_box" />
+
+    <TextView
+        android:id="@+id/tv_store_dialog_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:text="@string/tv_freeze"
+        android:textColor="#9C27B0"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ib_store_dialog_buy"
+        app:layout_constraintEnd_toEndOf="@+id/ib_store_dialog_buy"
+        app:layout_constraintStart_toStartOf="@+id/ib_store_dialog_buy"
+        app:layout_constraintTop_toTopOf="@+id/ib_store_dialog_buy" />
+</androidx.constraintlayout.widget.ConstraintLayout>
