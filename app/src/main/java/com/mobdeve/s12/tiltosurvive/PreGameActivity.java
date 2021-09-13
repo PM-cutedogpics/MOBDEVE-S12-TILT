@@ -50,8 +50,6 @@ public class PreGameActivity extends AppCompatActivity {
 
         this.ibtnBack.setOnClickListener(v -> {
             this.helper.resetPowerupsActive();
-            Intent intent = new Intent(PreGameActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
 
