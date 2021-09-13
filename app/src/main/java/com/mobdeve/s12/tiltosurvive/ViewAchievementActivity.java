@@ -36,8 +36,6 @@ public class ViewAchievementActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         ibtnVaBack.setOnClickListener(v -> {
-            Intent intent = new Intent(ViewAchievementActivity.this, AchievementsActivity.class);
-            startActivity(intent);
             finish();
         });
     }

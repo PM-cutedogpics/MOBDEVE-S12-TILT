@@ -88,35 +88,30 @@ public class MainActivity extends AppCompatActivity {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, PreGameActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.ibtnStore.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, StoreActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.ibtnSettings.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.ibtnStats.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.ibtnInstructions.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(intent);
-            finish();
         });
 
         this.ibtnMoo.setOnClickListener(v -> {

@@ -45,8 +45,6 @@ public class HistoryActivity extends AppCompatActivity {
         this.initRecyclerView();
         this.btnBack = findViewById(R.id.btn_history_back);
         this.btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
 

@@ -52,8 +52,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         this.ibtnBack = findViewById(R.id.ibtn_instructions_back);
         this.ibtnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
     }

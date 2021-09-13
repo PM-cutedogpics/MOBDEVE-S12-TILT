@@ -40,8 +40,6 @@ public class PostGameActivity extends AppCompatActivity {
         this.tvScore = findViewById(R.id.tv_post_game_score);
         this.tvTime = findViewById(R.id.tv_post_game_time);
         this.ibtnHome.setOnClickListener(v -> {
-            Intent intent = new Intent(PostGameActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
         this.ibtnPlay.setOnClickListener(v -> {

@@ -40,8 +40,6 @@ public class AchievementsActivity extends AppCompatActivity {
         this.initRecyclerView();
         this.ibtnBack = findViewById(R.id.ibtn_achie_back);
         this.ibtnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(AchievementsActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
     }

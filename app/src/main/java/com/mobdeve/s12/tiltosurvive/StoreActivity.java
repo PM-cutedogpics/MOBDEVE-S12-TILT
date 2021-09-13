@@ -58,8 +58,6 @@ public class StoreActivity extends AppCompatActivity {
         this.tvBalance.setText(String.valueOf(this.balance));
         this.ibtnBack = findViewById(R.id.ibtn_store_back);
         this.ibtnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(StoreActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
     }
@@ -119,19 +117,11 @@ public class StoreActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         MainActivity.music.start();
-
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
-    @Override
-    protected void onStop(){
-        super.onStop();
-        MainActivity.music.pause();
-    }
+//    @Override
+//    protected void onStop(){
+//        super.onStop();
+//        MainActivity.music.pause();
+//    }
 }
