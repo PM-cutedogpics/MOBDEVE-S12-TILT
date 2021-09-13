@@ -14,6 +14,9 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import static android.app.Notification.DEFAULT_SOUND;
+import static android.app.Notification.DEFAULT_VIBRATE;
+
 public class CheckRecentRun extends Service {
 
     private final static String TAG = "CheckRecentPlay";
@@ -64,10 +67,11 @@ public class CheckRecentRun extends Service {
         Intent mainIntent = new Intent(this, MainActivity.class);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "notifyUser")
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.notif)
                 .setContentTitle("Come Back!")
                 .setContentText("We miss you! You have not played for 3 days. :(")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setDefaults(DEFAULT_SOUND | DEFAULT_VIBRATE) //Important for heads-up notification
+                .setPriority(NotificationCompat.PRIORITY_MAX);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
 
