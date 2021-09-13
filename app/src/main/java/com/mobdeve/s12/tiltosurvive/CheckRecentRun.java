@@ -11,6 +11,9 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 public class CheckRecentRun extends Service {
 
     private final static String TAG = "CheckRecentPlay";
@@ -30,9 +33,10 @@ public class CheckRecentRun extends Service {
         // Are notifications enabled?
         if (settings.getBoolean("enabled", true)) {
             // Is it time for a notification?
-            if (settings.getLong("lastRun", Long.MAX_VALUE) < System.currentTimeMillis() - delay)
+            if (settings.getLong("lastRun", Long.MAX_VALUE) < System.currentTimeMillis() - delay) {
                 sendNotification();
-
+                Log.v(TAG, "NOTIFY USER");
+            }
         } else {
             Log.i(TAG, "Notifications are disabled");
         }
@@ -58,23 +62,16 @@ public class CheckRecentRun extends Service {
     public void sendNotification() {
 
         Intent mainIntent = new Intent(this, MainActivity.class);
-        @SuppressWarnings("deprecation")
-        Notification noti = new Notification.Builder(this)
-                .setAutoCancel(true)
-                .setContentIntent(PendingIntent.getActivity(this, 131314, mainIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT))
-                .setContentTitle("We Miss You!")
-                .setContentText("Please play our game again soon.")
-                .setDefaults(Notification.DEFAULT_ALL)
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "notifyUser")
                 .setSmallIcon(R.drawable.ic_launcher)
-                .setTicker("We Miss You! Please come back and play our game again soon.")
-                .setWhen(System.currentTimeMillis())
-                .getNotification();
+                .setContentTitle("Come Back!")
+                .setContentText("We miss you! You have not played for 3 days. :(")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
-        NotificationManager notificationManager
-                = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(131315, noti);
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
 
+        notificationManagerCompat.notify(200, builder.build());
         Log.v(TAG, "Notification sent");
     }
 
