@@ -10,31 +10,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVES12TilttoSurvive">
         <activity android:name=".HowToPlayActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".SettingsActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".ViewAchievementActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".AchievementsActivity"/>
         <activity
             android:name=".PreGameActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".AchievementsActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".IngameActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".HistoryActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".StoreActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".PostGameActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
