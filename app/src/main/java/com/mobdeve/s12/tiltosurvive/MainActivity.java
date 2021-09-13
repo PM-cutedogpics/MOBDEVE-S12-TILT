@@ -3,6 +3,7 @@ package com.mobdeve.s12.tiltosurvive;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -31,12 +32,30 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper helper;
 
+    private final static String TAG = "MainActivity";
+    public final static String PREFS = "PrefsFile";
+
+    private SharedPreferences settings = null;
+    private SharedPreferences.Editor editor = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         this.initComponents();
+        // Save time of run:
+        settings = getSharedPreferences(PREFS, MODE_PRIVATE);
+        editor = settings.edit();
+
+        // First time running app?
+        if (!settings.contains("lastRun"))
+            enableNotification(null);
+        else
+            recordRunTime();
+
+        Log.v(TAG, "Starting CheckRecentRun service...");
+        startService(new Intent(this,  CheckRecentRun.class));
     }
 
     private void initComponents() {
@@ -69,30 +88,35 @@ public class MainActivity extends AppCompatActivity {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, PreGameActivity.class);
             startActivity(intent);
+            finish();
         });
 
         this.ibtnStore.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, StoreActivity.class);
             startActivity(intent);
+            finish();
         });
 
         this.ibtnSettings.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
+            finish();
         });
 
         this.ibtnStats.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             startActivity(intent);
+            finish();
         });
 
         this.ibtnInstructions.setOnClickListener(v -> {
             this.pbMain.setVisibility(View.VISIBLE);
             Intent intent = new Intent(MainActivity.this, HowToPlayActivity.class);
             startActivity(intent);
+            finish();
         });
 
         this.ibtnMoo.setOnClickListener(v -> {
@@ -117,6 +141,25 @@ public class MainActivity extends AppCompatActivity {
         this.music.start();
     }
 
+    public void recordRunTime() {
+        editor.putLong("lastRun", System.currentTimeMillis());
+        editor.commit();
+        Log.v(TAG, "Recording Time");
+    }
+
+    public void enableNotification(View v) {
+        editor.putLong("lastRun", System.currentTimeMillis());
+        editor.putBoolean("enabled", true);
+        editor.commit();
+        Log.v(TAG, "Notifications enabled");
+    }
+
+    public void disableNotification(View v) {
+        editor.putBoolean("enabled", false);
+        editor.commit();
+        Log.v(TAG, "Notifications disabled");
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -129,4 +172,12 @@ public class MainActivity extends AppCompatActivity {
         this.music.start();
         this.pbMain.setVisibility(View.GONE);
     }
+
+//    @Override
+//    protected void onStop(){
+//        super.onStop();
+//        MainActivity.music.pause();
+//        MainActivity.music.release();
+//    }
+
 }
