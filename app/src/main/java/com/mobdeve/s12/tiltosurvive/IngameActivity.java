@@ -1,14 +1,14 @@
 package com.mobdeve.s12.tiltosurvive;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +20,10 @@ public class IngameActivity extends AppCompatActivity {
     private TextView tvScore;
     private int fun;
     private MediaPlayer ingame;
+    private ImageButton ibtnResume;
+    private ImageButton ibtnMainMenu;
+    private TextView tvResume;
+    private TextView tvMainMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class IngameActivity extends AppCompatActivity {
         this.ibtnEnd = findViewById(R.id.ibtn_end);
         this.timer = findViewById(R.id.chr_time);
         this.tvScore = findViewById(R.id.tv_ingame_score);
+        this.ibtnResume = findViewById(R.id.ibtn_ingame_resume);
+        this.ibtnMainMenu = findViewById(R.id.ibtn_ingame_mainmenu);
+        this.tvResume = findViewById(R.id.tv_resume);
+        this.tvMainMenu = findViewById(R.id.tv_mainmenu);
 
         MainActivity.music.pause();
 
@@ -64,11 +72,55 @@ public class IngameActivity extends AppCompatActivity {
             this.fun += 1;
             this.tvScore.setText(String.valueOf(this.fun));
         });
+
+        this.ibtnPause.setOnClickListener(v -> {
+            timer.stop();
+            this.ingame.pause();
+            this.ibtnResume.setVisibility(View.VISIBLE);
+            this.tvResume.setVisibility(View.VISIBLE);
+            this.ibtnMainMenu.setVisibility(View.VISIBLE);
+            this.tvMainMenu.setVisibility(View.VISIBLE);
+        });
+
+        this.ibtnResume.setOnClickListener(v -> {
+            timer.start();
+            this.ingame.start();
+            this.ibtnResume.setVisibility(View.GONE);
+            this.tvResume.setVisibility(View.GONE);
+            this.ibtnMainMenu.setVisibility(View.GONE);
+            this.tvMainMenu.setVisibility(View.GONE);
+        });
+
+        this.ibtnMainMenu.setOnClickListener(v -> {
+            this.ingame.release();
+            Intent intent = new Intent(IngameActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         ingame.start();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        // code here to show dialog
+        timer.stop();
+        this.ingame.pause();
+        this.ibtnResume.setVisibility(View.VISIBLE);
+        this.tvResume.setVisibility(View.VISIBLE);
+        this.ibtnMainMenu.setVisibility(View.VISIBLE);
+        this.tvMainMenu.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ingame.pause();
     }
 }
