@@ -51,8 +51,7 @@ public class CheckRecentRun extends Service {
     public void setAlarm() {
 
         Intent serviceIntent = new Intent(this, CheckRecentRun.class);
-        PendingIntent pi = PendingIntent.getService(this, 131313, serviceIntent,
-                PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pi = PendingIntent.getService(this, 0, serviceIntent, 0);
 
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + delay, pi);

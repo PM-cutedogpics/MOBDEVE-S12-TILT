@@ -53,9 +53,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-            android:name="com.mobdeve.s12.tiltosurvive.CheckRecentRun" >
-        </service>
+        <receiver android:name=".ReminderBroadcast"/>
     </application>
 
 </manifest>

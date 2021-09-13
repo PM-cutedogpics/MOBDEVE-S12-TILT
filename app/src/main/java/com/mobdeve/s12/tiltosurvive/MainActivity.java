@@ -2,14 +2,17 @@ package com.mobdeve.s12.tiltosurvive;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,18 +52,24 @@ public class MainActivity extends AppCompatActivity {
 
         this.initComponents();
         createNotificationChannel();
-        // Save time of run:
-        settings = getSharedPreferences(PREFS, MODE_PRIVATE);
-        editor = settings.edit();
 
-        // First time running app?
-        if (!settings.contains("lastRun"))
-            enableNotification(null);
-        else
-            recordRunTime();
+        System.out.println("STARTING NOTIFICATION");
+        Intent intent = new Intent(MainActivity.this, ReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_NO_CREATE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        long timeNow = System.currentTimeMillis();
+        long notifyTime = 60000;
 
-        Log.v(TAG, "Starting CheckRecentRun service...");
-        startService(new Intent(this,  CheckRecentRun.class));
+        // Set the alarm to start at approximately 2:00 p.m.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 34);
+        System.out.println("alarm at " + calendar.getTime());
+        // With setInexactRepeating(), you have to use one of the AlarmManager interval
+        // constants--in this case, AlarmManager.INTERVAL_DAY.
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     private void createNotificationChannel() {
@@ -185,11 +195,9 @@ public class MainActivity extends AppCompatActivity {
         this.pbMain.setVisibility(View.GONE);
     }
 
-//    @Override
-//    protected void onStop(){
-//        super.onStop();
-//        MainActivity.music.pause();
-//        MainActivity.music.release();
-//    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+    }
 
 }
