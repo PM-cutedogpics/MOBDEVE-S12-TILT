@@ -21,8 +21,6 @@ public class PostGameActivity extends AppCompatActivity {
     private TextView tvTime;
 
     private DatabaseHelper helper;
-    private MediaPlayer music;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +49,9 @@ public class PostGameActivity extends AppCompatActivity {
             finish();
         });
 
-        this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
-        this.music.setLooping(true);
-        this.music.start();
+        MainActivity.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
+        MainActivity.music.setLooping(true);
+        MainActivity.music.start();
 
         this.loadData();
     }
@@ -96,12 +94,12 @@ public class PostGameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        this.music.pause();
+        MainActivity.music.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        this.music.start();
+        MainActivity.music.start();
     }
 }
