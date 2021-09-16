@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
@@ -24,6 +25,7 @@ public class IngameActivity extends AppCompatActivity {
     private ImageButton ibtnMainMenu;
     private TextView tvResume;
     private TextView tvMainMenu;
+    private long timeWhenStopped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,8 @@ public class IngameActivity extends AppCompatActivity {
         timer.start();
 
         this.ibtnEnd.setOnClickListener(v -> {
+            timeWhenStopped = timer.getBase() - SystemClock.elapsedRealtime();
             timer.stop();
-            this.ingame.stop();
-            this.ingame.release();
             Intent intent = new Intent(IngameActivity.this, PostGameActivity.class);
             intent.putExtra(Keys.KEY_TV_TIME.name(), timer.getText());
             intent.putExtra(Keys.KEY_TV_SCORE.name(), tvScore.getText());
@@ -74,6 +75,7 @@ public class IngameActivity extends AppCompatActivity {
         });
 
         this.ibtnPause.setOnClickListener(v -> {
+            timeWhenStopped = timer.getBase() - SystemClock.elapsedRealtime();
             timer.stop();
             this.ingame.pause();
             this.ibtnResume.setVisibility(View.VISIBLE);
@@ -83,7 +85,9 @@ public class IngameActivity extends AppCompatActivity {
         });
 
         this.ibtnResume.setOnClickListener(v -> {
+            timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
             timer.start();
+            timeWhenStopped = 0;
             this.ingame.start();
             this.ibtnResume.setVisibility(View.GONE);
             this.tvResume.setVisibility(View.GONE);
@@ -92,6 +96,7 @@ public class IngameActivity extends AppCompatActivity {
         });
 
         this.ibtnMainMenu.setOnClickListener(v -> {
+            timer.stop();
             this.ingame.release();
             Intent intent = new Intent(IngameActivity.this, MainActivity.class);
             startActivity(intent);
@@ -122,5 +127,13 @@ public class IngameActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         ingame.pause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ingame.start();
+        ingame.stop();
+        ingame.release();
     }
 }
