@@ -1,5 +1,6 @@
 package com.mobdeve.s12.tiltosurvive;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -164,7 +165,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                             if(Rect.intersects(spaceship.getCollisionShape(), cows.get(i).getCollisionShape())) {
                                 gameOver = true;
                                 timer.stop();
-                                this.tvGameOver.setVisibility(VISIBLE);
+                                ((Activity) getContext()).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        tvGameOver.setVisibility(VISIBLE);
+                                    }
+                                });
+
                             }
                         }
                     }

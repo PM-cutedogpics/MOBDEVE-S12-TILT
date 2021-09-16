@@ -143,9 +143,9 @@ public class IngameActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        // code here to show dialog
         timer.stop();
         this.ingame.pause();
+        this.gamePanel.setPause(true);
         this.ibtnResume.setVisibility(View.VISIBLE);
         this.tvResume.setVisibility(View.VISIBLE);
         this.ibtnMainMenu.setVisibility(View.VISIBLE);
