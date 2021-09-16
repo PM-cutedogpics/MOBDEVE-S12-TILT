@@ -12,8 +12,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,9 @@ public class StoreActivity extends AppCompatActivity {
 
     private TextView tvBalance;
     private ImageButton ibtnBack;
+    private ImageView ivView;
+    private TextView tvSuccess;
+    private TextView tvFail;
 
     private DatabaseHelper helper;
 
@@ -48,6 +54,9 @@ public class StoreActivity extends AppCompatActivity {
 
     private void initComponents() {
         this.tvBalance = findViewById(R.id.tv_balance);
+        this.ivView = findViewById(R.id.iv_store_popup);
+        this.tvSuccess = findViewById(R.id.tv_success);
+        this.tvFail = findViewById(R.id.tv_fail);
 
         this.helper = new DatabaseHelper(StoreActivity.this);
         Cursor cursor = this.helper.readStats();
@@ -84,7 +93,7 @@ public class StoreActivity extends AppCompatActivity {
             PowerUpsModel powerUpsModel = new PowerUpsModel(cursor.getString(1), cursor.getString(2), icon, iconOwned, cursor.getInt(3), cursor.getInt(4), cursor.getInt(7));
             this.powerups.add(powerUpsModel);
         }
-        this.storeAdapter = new StoreAdapter(StoreActivity.this, StoreActivity.this, this.helper, this.powerups, this.tvBalance);
+        this.storeAdapter = new StoreAdapter(StoreActivity.this, StoreActivity.this, this.helper, this.powerups, this.tvBalance, this.ivView, this.tvFail, this.tvSuccess);
         this.recyclerView.setAdapter(this.storeAdapter);
         this.helper.close();
     }

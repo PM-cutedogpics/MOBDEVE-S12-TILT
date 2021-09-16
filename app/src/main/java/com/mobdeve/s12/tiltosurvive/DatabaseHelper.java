@@ -246,7 +246,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public long updateStats(String rowId, String time, int deaths, int powers, String longest, int highest) {
+    public long updateStats(String rowId, int highest) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
