@@ -55,7 +55,7 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
         Cursor cursor = helper.readPowerData();
         cursor.moveToPosition(position);
         Integer isOwned = new Integer(cursor.getInt(4));
-        if (isOwned == 0)
+        if (isOwned == 0 || isOwned == 2)
             holder.ibPowerupIcon.setClickable(false);
 
         if (powerup.isSelected() == 0) {

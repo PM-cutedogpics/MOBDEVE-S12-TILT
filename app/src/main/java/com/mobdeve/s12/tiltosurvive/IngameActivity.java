@@ -3,7 +3,6 @@ package com.mobdeve.s12.tiltosurvive;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Chronometer;
@@ -49,7 +48,7 @@ public class IngameActivity extends AppCompatActivity {
         this.tvMainMenu = findViewById(R.id.tv_mainmenu);
         this.tvGameOver = findViewById(R.id.tv_game_over);
         this.tvGameOver.setOnClickListener(v -> this.gameOver());
-        this.gamePanel = new GamePanel(this, this.timer, this.tvGameOver);
+        this.gamePanel = new GamePanel(this, this.timer, this.tvGameOver, this.ibtnPause);
         SurfaceView surface = (SurfaceView) findViewById(R.id.sv_game);
         surface.getHolder().addCallback(gamePanel);
 
@@ -66,6 +65,7 @@ public class IngameActivity extends AppCompatActivity {
         this.ibtnPause.setOnClickListener(v -> {
             timer.stop();
             this.ingame.pause();
+            this.gamePanel.setPause(true);
             this.ibtnResume.setVisibility(View.VISIBLE);
             this.tvResume.setVisibility(View.VISIBLE);
             this.ibtnMainMenu.setVisibility(View.VISIBLE);
@@ -75,6 +75,7 @@ public class IngameActivity extends AppCompatActivity {
         this.ibtnResume.setOnClickListener(v -> {
             timer.start();
             this.ingame.start();
+            this.gamePanel.setPause(false);
             this.ibtnResume.setVisibility(View.GONE);
             this.tvResume.setVisibility(View.GONE);
             this.ibtnMainMenu.setVisibility(View.GONE);
