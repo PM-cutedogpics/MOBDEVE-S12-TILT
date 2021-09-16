@@ -125,8 +125,6 @@ public class IngameActivity extends AppCompatActivity {
     }
 
     public void gameOver() {
-        this.ingame.stop();
-        this.ingame.release();
         Intent intent = new Intent(IngameActivity.this, PostGameActivity.class);
         intent.putExtra(Keys.KEY_TV_TIME.name(), timer.getText());
         intent.putExtra(Keys.KEY_TV_SCORE.name(), tvScore.getText());
