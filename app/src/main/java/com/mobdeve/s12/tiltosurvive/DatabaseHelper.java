@@ -107,15 +107,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
                 + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
-                + ") values(1, 'Freeze', 'Freeze cows around the spaceship.', 0, 0, 'freeze_box_grey', 'freeze_box', '500')");
+                + ") values(1, 'Freeze', 'Freeze cows around the spaceship.', 0, 2, 'freeze_box_grey', 'freeze_box', '500')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
                 + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
-                + ") values(2, 'Nuke', 'Nukes around the spaceship.', 0, 0, 'nuke_box_grey', 'nuke_box', '500')");
+                + ") values(2, 'Nuke', 'Nukes around the spaceship.', 0, 2, 'nuke_box_grey', 'nuke_box', '500')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
                 + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE
-                + ") values(3, 'Laser', 'Shoots a laser depending on where the spaceship is aimed at.', 0, 0, 'laser_box_grey', 'laser_box', '500')");
+                + ") values(3, 'Laser', 'Shoots a laser depending on where the spaceship is aimed at.', 0, 2, 'laser_box_grey', 'laser_box', '500')");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_POWER + "(" + COLUMN_ID_POWER + ", "
                 + COLUMN_POWER_NAME + ", " + COLUMN_POWER_DESCRIPTION + ", " + COLUMN_POWER_SELECTED
                 + ", " + COLUMN_POWER_OWNED + ", " + COLUMN_POWER_ICON + ", " + COLUMN_POWER_ICON_ACTIVATED + ", " + COLUMN_POWER_PRICE

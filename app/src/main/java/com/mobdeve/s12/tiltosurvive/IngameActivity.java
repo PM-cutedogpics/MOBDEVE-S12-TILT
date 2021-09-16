@@ -1,35 +1,21 @@
 package com.mobdeve.s12.tiltosurvive;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.SurfaceHolder;
+import android.os.SystemClock;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.ArrayList;
-
-import javax.security.auth.callback.Callback;
 
 public class IngameActivity extends AppCompatActivity {
     private ImageButton ibtnPause;
     public Chronometer timer;
-    private ImageButton ibtnClick;
-    private ImageButton ibtnEnd;
     private TextView tvScore;
-    private int fun;
     private MediaPlayer ingame;
     private ImageButton ibtnFirstPowerup;
     private ImageButton ibtnSecondPowerup;
@@ -76,22 +62,31 @@ public class IngameActivity extends AppCompatActivity {
         timer.start();
 
         this.loadData();
-//        this.ibtnEnd.setOnClickListener(v -> {
-//            timer.stop();
-//            this.ingame.stop();
-//            this.ingame.release();
-//            Intent intent = new Intent(IngameActivity.this, PostGameActivity.class);
-//            intent.putExtra(Keys.KEY_TV_TIME.name(), timer.getText());
-//            intent.putExtra(Keys.KEY_TV_SCORE.name(), tvScore.getText());
-//            startActivity(intent);
-//            finish();
-//        });
 
-//        this.fun = 0;
-//        this.ibtnClick.setOnClickListener(v -> {
-//            this.fun += 1;
-//            this.tvScore.setText(String.valueOf(this.fun));
-//        });
+        this.ibtnPause.setOnClickListener(v -> {
+            timer.stop();
+            this.ingame.pause();
+            this.ibtnResume.setVisibility(View.VISIBLE);
+            this.tvResume.setVisibility(View.VISIBLE);
+            this.ibtnMainMenu.setVisibility(View.VISIBLE);
+            this.tvMainMenu.setVisibility(View.VISIBLE);
+        });
+
+        this.ibtnResume.setOnClickListener(v -> {
+            timer.start();
+            this.ingame.start();
+            this.ibtnResume.setVisibility(View.GONE);
+            this.tvResume.setVisibility(View.GONE);
+            this.ibtnMainMenu.setVisibility(View.GONE);
+            this.tvMainMenu.setVisibility(View.GONE);
+        });
+
+        this.ibtnMainMenu.setOnClickListener(v -> {
+            this.ingame.release();
+            Intent intent = new Intent(IngameActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void loadData(){
@@ -130,48 +125,6 @@ public class IngameActivity extends AppCompatActivity {
         intent.putExtra(Keys.KEY_TV_SCORE.name(), tvScore.getText());
         startActivity(intent);
         finish();
-        this.ibtnEnd.setOnClickListener(v -> {
-            timer.stop();
-            this.ingame.stop();
-            this.ingame.release();
-            Intent intent = new Intent(IngameActivity.this, PostGameActivity.class);
-            intent.putExtra(Keys.KEY_TV_TIME.name(), timer.getText());
-            intent.putExtra(Keys.KEY_TV_SCORE.name(), tvScore.getText());
-            startActivity(intent);
-            finish();
-        });
-
-        this.fun = 0;
-        this.ibtnClick.setOnClickListener(v -> {
-            this.fun += 1;
-            this.tvScore.setText(String.valueOf(this.fun));
-        });
-
-        this.ibtnPause.setOnClickListener(v -> {
-            timer.stop();
-            this.ingame.pause();
-            this.ibtnResume.setVisibility(View.VISIBLE);
-            this.tvResume.setVisibility(View.VISIBLE);
-            this.ibtnMainMenu.setVisibility(View.VISIBLE);
-            this.tvMainMenu.setVisibility(View.VISIBLE);
-        });
-
-        this.ibtnResume.setOnClickListener(v -> {
-            timer.start();
-            this.ingame.start();
-            this.ibtnResume.setVisibility(View.GONE);
-            this.tvResume.setVisibility(View.GONE);
-            this.ibtnMainMenu.setVisibility(View.GONE);
-            this.tvMainMenu.setVisibility(View.GONE);
-        });
-
-        this.ibtnMainMenu.setOnClickListener(v -> {
-            this.ingame.release();
-            Intent intent = new Intent(IngameActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
     }
 
     @Override
@@ -195,16 +148,6 @@ public class IngameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        ingame.pause();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
         this.ingame.pause();
-    }
-
-    public void stopTimer() {
-        this.timer.stop();
     }
 }

@@ -46,8 +46,11 @@ public class PreGameActivity extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constants.SCREEN_WIDTH = dm.widthPixels;
-        Constants.SCREEN_HEIGHT = dm.heightPixels + this.getNavigationBarHeight();
+        Constants.SCREEN_HEIGHT = dm.heightPixels;
         setContentView(R.layout.activity_pre_game);
+        System.out.println(Constants.SCREEN_HEIGHT);
+        System.out.println(Constants.SCREEN_WIDTH);
+
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -119,21 +122,6 @@ public class PreGameActivity extends AppCompatActivity {
 
         this.preGameAdapter = new PreGameAdapter(PreGameActivity.this, PreGameActivity.this, this.helper, this.powerups);
         this.recyclerView.setAdapter(this.preGameAdapter);
-    }
-
-    private int getNavigationBarHeight() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            DisplayMetrics metrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            int usableHeight = metrics.heightPixels;
-            getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-            int realHeight = metrics.heightPixels;
-            if (realHeight > usableHeight)
-                return realHeight - usableHeight;
-            else
-                return 0;
-        }
-        return 0;
     }
 
     @Override

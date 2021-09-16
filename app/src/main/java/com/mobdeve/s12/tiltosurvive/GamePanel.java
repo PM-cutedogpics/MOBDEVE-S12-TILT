@@ -131,14 +131,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 spaceship.y -= Math.abs(ySpeed * elapsedTime) > 5 ? ySpeed * elapsedTime : 0;
             }
 
-            if (spaceship.x < Constants.SCREEN_WIDTH / 40 * 2)
-                spaceship.x = Constants.SCREEN_WIDTH / 40 * 2;
-            else if (spaceship.x > Constants.SCREEN_WIDTH / 40 * 29)
-                spaceship.x = Constants.SCREEN_WIDTH / 40 * 29;
-            if (spaceship.y < Constants.SCREEN_HEIGHT / 60 * 10)
-                spaceship.y = Constants.SCREEN_HEIGHT / 60 * 10;
-            else if (spaceship.y > Constants.SCREEN_HEIGHT / 60 * 54)
-                spaceship.y = Constants.SCREEN_HEIGHT / 60 * 54;
+            if (spaceship.x < Constants.SCREEN_WIDTH / 40 * 5)
+                spaceship.x = Constants.SCREEN_WIDTH / 40 * 5;
+            else if (spaceship.x > Constants.SCREEN_WIDTH / 40 * 32)
+                spaceship.x = Constants.SCREEN_WIDTH / 40 * 32;
+            if (spaceship.y < Constants.SCREEN_HEIGHT / 60 * 4)
+                spaceship.y = Constants.SCREEN_HEIGHT / 60 * 4;
+            else if (spaceship.y > Constants.SCREEN_HEIGHT / 60 * 56)
+                spaceship.y = Constants.SCREEN_HEIGHT / 60 * 56;
             if(counter > 40)
                 if (frameTime % 3 == 0){
                     for (int i = 0; i < cows.size(); i++) {

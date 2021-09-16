@@ -63,6 +63,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             holder.tvPowerupPrice.setText("SOLD");
             holder.tvPowerupPrice.setTextColor(Color.GRAY);
             holder.ibPowerupIcon.setEnabled(false);
+        } else if (powerup.getOwned() == 2) {
+            holder.ibPowerupIcon.setImageResource(powerup.getImageId());
+            holder.tvPowerupPrice.setText("UNAVAILABLE");
+            holder.tvPowerupPrice.setTextColor(Color.GRAY);
+            holder.ibPowerupIcon.setEnabled(false);
         }
         else {
             holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
