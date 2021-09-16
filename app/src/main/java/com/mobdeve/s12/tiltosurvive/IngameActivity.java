@@ -3,6 +3,7 @@ package com.mobdeve.s12.tiltosurvive;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Chronometer;
@@ -25,6 +26,7 @@ public class IngameActivity extends AppCompatActivity {
     private ImageButton ibtnMainMenu;
     private TextView tvResume;
     private TextView tvMainMenu;
+    private long timeWhenStopped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,7 @@ public class IngameActivity extends AppCompatActivity {
         this.loadData();
 
         this.ibtnPause.setOnClickListener(v -> {
+            timeWhenStopped = timer.getBase() - SystemClock.elapsedRealtime();
             timer.stop();
             this.ingame.pause();
             this.gamePanel.setPause(true);
@@ -73,7 +76,9 @@ public class IngameActivity extends AppCompatActivity {
         });
 
         this.ibtnResume.setOnClickListener(v -> {
+            timer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
             timer.start();
+            timeWhenStopped = 0;
             this.ingame.start();
             this.gamePanel.setPause(false);
             this.ibtnResume.setVisibility(View.GONE);
@@ -83,6 +88,7 @@ public class IngameActivity extends AppCompatActivity {
         });
 
         this.ibtnMainMenu.setOnClickListener(v -> {
+            timer.stop();
             this.ingame.release();
             Intent intent = new Intent(IngameActivity.this, MainActivity.class);
             startActivity(intent);
@@ -149,6 +155,14 @@ public class IngameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        this.ingame.pause();
+        ingame.pause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ingame.start();
+        ingame.stop();
+        ingame.release();
     }
 }
