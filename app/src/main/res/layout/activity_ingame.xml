@@ -6,97 +6,109 @@
     android:layout_height="match_parent"
     android:background="@drawable/space_bg_post_game">
 
-    <ImageButton
-        android:id="@+id/ibtn_click"
-        android:layout_width="216dp"
-        android:layout_height="122dp"
-        android:layout_marginTop="104dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/text_box" />
-
-    <ImageButton
-        android:id="@+id/ibtn_end"
-        android:layout_width="216dp"
-        android:layout_height="122dp"
-        android:background="@null"
-        android:scaleType="fitXY"
+    <SurfaceView
+        android:id="@+id/sv_game"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ibtn_click"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/text_box" />
-
-    <TextView
-        android:id="@+id/tv_home2"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:gravity="center"
-        android:text="CLICK ME"
-        android:textColor="#000000"
-        android:textSize="33sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ibtn_click"
-        app:layout_constraintEnd_toEndOf="@+id/ibtn_click"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/ibtn_click"
-        app:layout_constraintTop_toTopOf="@+id/ibtn_click"
-        app:layout_constraintVertical_bias="0.489" />
-
-    <TextView
-        android:id="@+id/tv_home3"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/eight_bit_wonder"
-        android:gravity="center"
-        android:text="END GAME"
-        android:textColor="#000000"
-        android:textSize="33sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ibtn_end"
-        app:layout_constraintEnd_toEndOf="@+id/ibtn_end"
-        app:layout_constraintStart_toStartOf="@+id/ibtn_end"
-        app:layout_constraintTop_toBottomOf="@+id/ibtn_click" />
-
-    <ImageButton
-        android:id="@+id/btn_pause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:backgroundTint="#FFFFFF"
-        android:tint="#673AB7"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_media_pause" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/ib_first_powerup"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/ib_second_powerup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/force_field_box" />
 
     <Chronometer
         android:id="@+id/chr_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:textColor="#673AB7"
-        app:layout_constraintStart_toEndOf="@+id/btn_pause"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_pause" />
+
+    <ImageButton
+        android:id="@+id/btn_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_media_pause"
+        app:tint="#673AB7" />
 
     <TextView
         android:id="@+id/tv_ingame_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="@font/eight_bit_wonder"
         android:text="0"
         android:textColor="#673AB7"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/ibtn_click"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ib_second_powerup"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/ib_third_powerup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/haste_box" />
+
+    <ImageButton
+        android:id="@+id/ib_third_powerup"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/slow_box" />
+
+    <TextView
+        android:id="@+id/tv_game_over"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:gravity="center"
+        android:text="GAME OVER"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

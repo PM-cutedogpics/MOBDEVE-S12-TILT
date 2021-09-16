@@ -23,8 +23,8 @@ public class CheckRecentRun extends Service {
     private static Long MILLISECS_PER_DAY = 86400000L;
     private static Long MILLISECS_PER_MIN = 60000L;
 
-      private static long delay = MILLISECS_PER_MIN * 1;   // 3 minutes (for testing)
-//    private static long delay = MILLISECS_PER_DAY * 3;   // 3 days
+//      private static long delay = MILLISECS_PER_MIN * 1;   // 3 minutes (for testing)
+    private static long delay = MILLISECS_PER_DAY * 3;   // 3 days
 
     @Override
     public void onCreate() {

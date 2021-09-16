@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -19,6 +20,7 @@ public class PostGameActivity extends AppCompatActivity {
     private TextView tvTime;
 
     private DatabaseHelper helper;
+    private MediaPlayer music;
 
 
     @Override
@@ -47,6 +49,10 @@ public class PostGameActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        this.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
+        this.music.setLooping(true);
+        this.music.start();
 
         this.loadData();
     }
@@ -80,12 +86,12 @@ public class PostGameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        MainActivity.music.pause();
+        this.music.pause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        MainActivity.music.start();
+        this.music.start();
     }
 }
