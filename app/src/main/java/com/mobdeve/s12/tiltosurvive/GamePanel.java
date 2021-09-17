@@ -60,7 +60,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
         setFocusable(true);
         cows = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             Cow cow = new Cow(getResources());
             cows.add(cow);
         }
@@ -105,6 +105,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 frameTime = Constants.INIT_TIME;
             int elapsedTime = (int) (System.currentTimeMillis() - frameTime);
             frameTime = System.currentTimeMillis();
+            System.out.println(elapsedTime);
             if (!paused)
                 if (orientationData.getOrientation() != null && orientationData.getStartOrientation() != null) {
                     float pitch = orientationData.getOrientation()[1] - orientationData.getStartOrientation()[1];
@@ -148,7 +149,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 }
 
 
-            if(counter > 30)
+            if(counter > 60)
                 if (!paused)
                     if (counter % 4 == 0){
                         for (int i = 0; i < cows.size(); i++) {
@@ -182,7 +183,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                             }
                         }
                     }
-        }
+                }
     }
 
     @Override
@@ -197,6 +198,17 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             this.obstacleManager.draw(canvas);
         }
     }
+//
+//    private void drawCenterText(Canvas canvas, Paint paint, String text) {
+//        paint.setTextAlign(Paint.Align.LEFT);
+//        canvas.getClipBounds(r);
+//        int cHeight = r.height();
+//        int cWidth = r.width();
+//        paint.getTextBounds(text, 0, text.length(), r);
+//        float x = cWidth / 2f - r.width() / 2f - r.left;
+//        float y = cHeight / 2f + r.height() / 2f - r.bottom;
+//        canvas.drawText(text, x, y, paint);
+//    }
 
     public void setPause(boolean pause) {
         this.paused = pause;

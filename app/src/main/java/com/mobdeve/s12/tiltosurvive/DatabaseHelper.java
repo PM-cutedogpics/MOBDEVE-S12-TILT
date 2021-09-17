@@ -135,15 +135,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE +
                 "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
-                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Utter Defeat', 'Get defeated within 5 seconds', 0)");
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Giveaway!', 'Score atleast 50 points', 0)");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
-                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Stampede', 'Kill 100 cows', 0)");
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Stampede', 'Score atleast 100 points', 0)");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
-                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Cattle Driver', 'Block off 500 cows', 0)");
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Cattle Driver', 'Score atleast 1000 pointss', 0)");
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
-                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Cow Boy', 'Kill 1000 cows', 0)");
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE + "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
-                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Moo', 'Hit a cow', 0)");
+                + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Moo', 'Hit the cow', 0)");
     }
 
     public Cursor readPowerData() {

@@ -1,6 +1,8 @@
 package com.mobdeve.s12.tiltosurvive;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -17,6 +19,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import static android.app.Notification.DEFAULT_SOUND;
+import static android.app.Notification.DEFAULT_VIBRATE;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -140,11 +146,17 @@ public class MainActivity extends AppCompatActivity {
 
             if (this.achievement.getAchieved() == 0) {
                 this.helper.updateAchievements("Moo", 1);
-                Toast.makeText(this, "You have earned Moo!", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                this.helper.updateAchievements("Moo", 0);
-                Toast.makeText(this, "MOOOOO", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "You have earned Moo!", Toast.LENGTH_SHORT).show();
+                NotificationCompat.Builder builder0 = new NotificationCompat.Builder(this, "notifyAchievement")
+                        .setSmallIcon(R.drawable.notif)
+                        .setContentTitle("Achievement Unlocked!")
+                        .setContentText("You have earned Moo!")
+                        .setDefaults(DEFAULT_SOUND | DEFAULT_VIBRATE) //Important for heads-up notification
+                        .setPriority(NotificationCompat.PRIORITY_MAX);
+
+                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+                int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+                notificationManagerCompat.notify(m, builder0.build());
             }
         });
 
