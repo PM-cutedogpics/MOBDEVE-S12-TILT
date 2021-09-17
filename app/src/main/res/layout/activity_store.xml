@@ -96,4 +96,45 @@
         app:layout_constraintStart_toStartOf="@+id/gl_third_col_left"
         app:layout_constraintTop_toTopOf="@+id/gl_title_top" />
 
+    <ImageView
+        android:id="@+id/iv_store_popup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_store_powerup"
+        app:layout_constraintEnd_toStartOf="@+id/gl_third_col_left"
+        app:layout_constraintStart_toStartOf="@+id/gl_first_col_right"
+        app:layout_constraintTop_toTopOf="@+id/rv_store_powerup"
+        app:srcCompat="@drawable/text_box" />
+
+    <TextView
+        android:id="@+id/tv_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:includeFontPadding="false"
+        android:text="SUCCESSFULLY\nPURCHASED\nPOWERUP"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_store_powerup"
+        app:layout_constraintEnd_toEndOf="@+id/iv_store_popup"
+        app:layout_constraintStart_toStartOf="@+id/gl_first_col_right"
+        app:layout_constraintTop_toTopOf="@+id/rv_store_powerup" />
+
+    <TextView
+        android:id="@+id/tv_fail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eight_bit_wonder"
+        android:includeFontPadding="false"
+        android:text="INSUFFICIENT\nFUNDS"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_store_powerup"
+        app:layout_constraintEnd_toEndOf="@+id/iv_store_popup"
+        app:layout_constraintStart_toStartOf="@+id/gl_first_col_right"
+        app:layout_constraintTop_toTopOf="@+id/rv_store_powerup" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

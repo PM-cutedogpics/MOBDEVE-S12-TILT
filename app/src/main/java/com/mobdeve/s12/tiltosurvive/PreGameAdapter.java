@@ -2,6 +2,7 @@ package com.mobdeve.s12.tiltosurvive;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,15 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
     private ArrayList<PowerUpsModel> powerups;
     private int counter;
 
+    private Context context;
+
     private DatabaseHelper database;
 
     public PreGameAdapter(Activity activity, Context context, DatabaseHelper database, ArrayList<PowerUpsModel> powerups) {
         this.powerups = powerups;
         this.counter = 0;
         this.database = database;
+        this.context = context;
     }
 
     @NonNull
@@ -45,6 +49,15 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
     @Override
     public void onBindViewHolder(@NonNull @NotNull PreGameViewHolder holder, int position) {
         PowerUpsModel powerup = powerups.get(position);
+
+        DatabaseHelper helper = new DatabaseHelper(context);
+
+        Cursor cursor = helper.readPowerData();
+        cursor.moveToPosition(position);
+        Integer isOwned = new Integer(cursor.getInt(4));
+        if (isOwned == 0 || isOwned == 2)
+            holder.ibPowerupIcon.setClickable(false);
+
         if (powerup.isSelected() == 0) {
             holder.ibPowerupIcon.setImageResource(powerup.getImageId());
         }
@@ -52,28 +65,29 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
             holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
         }
         holder.tvPowerupName.setText(String.valueOf(powerup.getTitle()));
-        holder.ibPowerupIcon.setOnClickListener(v -> {
-            System.out.println(counter);
-            if (counter <= 3 && powerup.isSelected() == 1) {
-                powerup.setSelected(0);
-                database.updatePowerUpActive(powerup.getTitle(), powerup.isSelected());
-                counter--;
-                System.out.println(counter);
-                holder.ibPowerupIcon.setImageResource(powerup.getImageId());
-            }
-            else if (counter < 3 && powerup.isSelected() == 0) {
-                powerup.setSelected(1);
-                System.out.println();
-                database.updatePowerUpActive(powerup.getTitle(), powerup.isSelected());
-                counter++;
-                System.out.println(counter);
-                holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
 
-            }
-            else {
-                Toast.makeText(v.getContext(), "A maximum of only 3 power-ups can be selected.", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (isOwned != 0) {
+            holder.ibPowerupIcon.setOnClickListener(v -> {
+                System.out.println(counter);
+                if (counter <= 3 && powerup.isSelected() == 1) {
+                    powerup.setSelected(0);
+                    database.updatePowerUpActive(powerup.getTitle(), powerup.isSelected());
+                    counter--;
+                    System.out.println(counter);
+                    holder.ibPowerupIcon.setImageResource(powerup.getImageId());
+                } else if (counter < 3 && powerup.isSelected() == 0) {
+                    powerup.setSelected(1);
+                    System.out.println();
+                    database.updatePowerUpActive(powerup.getTitle(), powerup.isSelected());
+                    counter++;
+                    System.out.println(counter);
+                    holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
+
+                } else {
+                    Toast.makeText(v.getContext(), "A maximum of only 3 power-ups can be selected.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override

@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -23,14 +24,20 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     private ArrayList<PowerUpsModel> powerups;
     private int balance;
     private TextView tvBalance;
+    private ImageView ivView;
+    private TextView tvFail;
+    private TextView tvSuccess;
 
     private DatabaseHelper database;
 
-    public StoreAdapter(Activity activity, Context context, DatabaseHelper database, ArrayList<PowerUpsModel> powerups, TextView tvBalance) {
+    public StoreAdapter(Activity activity, Context context, DatabaseHelper database, ArrayList<PowerUpsModel> powerups, TextView tvBalance, ImageView ivView, TextView tvFail, TextView tvSuccess) {
         this.powerups = powerups;
         this.balance = 0;
         this.database = database;
         this.tvBalance = tvBalance;
+        this.ivView = ivView;
+        this.tvFail = tvFail;
+        this.tvSuccess = tvSuccess;
     }
 
     @NonNull
@@ -56,6 +63,11 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
             holder.tvPowerupPrice.setText("SOLD");
             holder.tvPowerupPrice.setTextColor(Color.GRAY);
             holder.ibPowerupIcon.setEnabled(false);
+        } else if (powerup.getOwned() == 2) {
+            holder.ibPowerupIcon.setImageResource(powerup.getImageId());
+            holder.tvPowerupPrice.setText("UNAVAILABLE");
+            holder.tvPowerupPrice.setTextColor(Color.GRAY);
+            holder.ibPowerupIcon.setEnabled(false);
         }
         else {
             holder.ibPowerupIcon.setImageResource(powerup.getActivatedImageId());
@@ -75,9 +87,35 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
                 holder.ibPowerupIcon.setImageResource(powerup.getImageId());
                 holder.ibPowerupIcon.setEnabled(false);
                 this.database.close();
+
+                this.ivView.setVisibility(View.VISIBLE);
+                this.tvSuccess.setVisibility(View.VISIBLE);
+
+                this.ivView.postDelayed(new Runnable() {
+                    public void run() {
+                        ivView.setVisibility(View.GONE);
+                    }
+                }, 3000);
+                this.tvSuccess.postDelayed(new Runnable() {
+                    public void run() {
+                        tvSuccess.setVisibility(View.GONE);
+                    }
+                }, 3000);
             }
             else {
-                Toast.makeText(v.getContext(), "Not enough credits", Toast.LENGTH_SHORT).show();
+                this.ivView.setVisibility(View.VISIBLE);
+                this.tvFail.setVisibility(View.VISIBLE);
+
+                this.ivView.postDelayed(new Runnable() {
+                    public void run() {
+                        ivView.setVisibility(View.GONE);
+                    }
+                }, 3000);
+                this.tvFail.postDelayed(new Runnable() {
+                    public void run() {
+                        tvFail.setVisibility(View.GONE);
+                    }
+                }, 3000);
             }
         });
     }
@@ -92,6 +130,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
         TextView tvPowerupName;
         TextView tvPowerupPrice;
         TextView tvPowerupDesc;
+
 
         public StoreViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -19,7 +21,6 @@ public class PostGameActivity extends AppCompatActivity {
     private TextView tvTime;
 
     private DatabaseHelper helper;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class PostGameActivity extends AppCompatActivity {
             finish();
         });
 
+        MainActivity.music = MediaPlayer.create(getApplicationContext(), R.raw.menumusic);
+        MainActivity.music.setLooping(true);
+        MainActivity.music.start();
+
         this.loadData();
     }
 
@@ -55,6 +60,15 @@ public class PostGameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String loadTvScore = intent.getStringExtra(Keys.KEY_TV_SCORE.name());
         String loadTvTime = intent.getStringExtra(Keys.KEY_TV_TIME.name());
+
+        Cursor cursor = this.helper.readStats();
+        while (cursor.moveToNext()){
+            Integer highscore = new Integer(cursor.getInt(1));
+            if (Integer.parseInt(loadTvScore) > highscore) {
+                this.helper.updateStats("1", Integer.parseInt(loadTvScore));
+            }
+
+        }
 
         this.tvScore.setText(loadTvScore);
         this.tvTime.setText(loadTvTime);

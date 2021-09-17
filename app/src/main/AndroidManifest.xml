@@ -57,5 +57,4 @@
             android:name="com.mobdeve.s12.tiltosurvive.CheckRecentRun" >
         </service>
     </application>
-
 </manifest>
