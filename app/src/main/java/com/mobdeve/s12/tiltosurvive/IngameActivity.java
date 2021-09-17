@@ -106,20 +106,26 @@ public class IngameActivity extends AppCompatActivity {
 
         for (int i = 0; i < powerupSize; i++) {
             if (i == 0) {
-                ibtnFirstPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_EFFECT_FIRST.name(), 0));
-                ibtnFirstPowerup.setOnClickListener(v ->
-                        ibtnFirstPowerup.setClickable(false));
-                ibtnFirstPowerup.setVisibility(View.VISIBLE);
+                this.ibtnFirstPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_ACTIVATED_FIRST.name(), 0));
+                this.ibtnFirstPowerup.setOnClickListener(v -> {
+                        this.ibtnFirstPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_USED_FIRST.name(), 0));
+                        this.gamePanel.applyPowerup(intent.getStringExtra(Keys.KEYS_IB_FIRST.name()));
+                        this.ibtnFirstPowerup.setEnabled(false);});
+                this.ibtnFirstPowerup.setVisibility(View.VISIBLE);
             } else if (i == 1) {
-                ibtnSecondPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_EFFECT_SECOND.name(), 0));
-                ibtnSecondPowerup.setOnClickListener(v ->
-                        ibtnSecondPowerup.setClickable(false));
-                ibtnSecondPowerup.setVisibility(View.VISIBLE);
+                this.ibtnSecondPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_ACTIVATED_SECOND.name(), 0));
+                this.ibtnSecondPowerup.setOnClickListener(v -> {
+                        this.ibtnSecondPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_USED_SECOND.name(), 0));
+                this.gamePanel.applyPowerup(intent.getStringExtra(Keys.KEYS_IB_SECOND.name()));
+                        this.ibtnSecondPowerup.setEnabled(false);});
+                this.ibtnSecondPowerup.setVisibility(View.VISIBLE);
             } else if (i == 2) {
-                ibtnThirdPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_EFFECT_THIRD.name(), 0));
-                ibtnThirdPowerup.setOnClickListener(v ->
-                        ibtnFirstPowerup.setClickable(false));
-                ibtnThirdPowerup.setVisibility(View.VISIBLE);
+                this.ibtnThirdPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_ACTIVATED_THIRD.name(), 0));
+                this.ibtnThirdPowerup.setOnClickListener(v -> {
+                        this.ibtnThirdPowerup.setImageResource(intent.getIntExtra(Keys.KEYS_USED_THIRD.name(), 0));
+                        this.gamePanel.applyPowerup(intent.getStringExtra(Keys.KEYS_IB_THIRD.name()));
+                        this.ibtnThirdPowerup.setEnabled(false);});
+                this.ibtnThirdPowerup.setVisibility(View.VISIBLE);
             }
         }
     }

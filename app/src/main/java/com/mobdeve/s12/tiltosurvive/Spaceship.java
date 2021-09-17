@@ -10,6 +10,8 @@ public class Spaceship {
     public int x, y, width, height;
     private Bitmap spaceship;
     private float lastDirection;
+    public float speed;
+    public boolean shielded;
 
     public Spaceship (Resources res) {
         spaceship = BitmapFactory.decodeResource(res, R.drawable.spaceship);
@@ -21,8 +23,9 @@ public class Spaceship {
         height /= 2;
 
         this.lastDirection = 90;
-
-        width = Constants.SCREEN_WIDTH / 40 * 4;
+        this.speed = 3000f;
+        this.shielded = false;
+        width = Constants.SCREEN_WIDTH / 40 * 2;
         height = Constants.SCREEN_HEIGHT / 60 * 4;
 
         spaceship = Bitmap.createScaledBitmap(spaceship, width, height, false);
@@ -33,6 +36,18 @@ public class Spaceship {
 
     public Bitmap getSpaceship() {
         return spaceship;
+    }
+
+    public void setSpaceship(Bitmap bitmap, String type) {
+        this.spaceship = bitmap;
+        if(type.equals("no shield")) {
+            this.width = Constants.SCREEN_WIDTH / 40 * 2;
+            this.height = Constants.SCREEN_HEIGHT / 60 * 4;
+        } else {
+            this.width = Constants.SCREEN_WIDTH / 40 * 2;
+            this.height = Constants.SCREEN_HEIGHT / 60 * 5;
+        }
+        this.spaceship = Bitmap.createScaledBitmap(this.spaceship, this.width, this.height, false);
     }
 
     public Rect getCollisionShape () {

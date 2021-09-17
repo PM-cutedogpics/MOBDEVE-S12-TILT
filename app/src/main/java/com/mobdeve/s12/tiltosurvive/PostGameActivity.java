@@ -69,7 +69,6 @@ public class PostGameActivity extends AppCompatActivity {
             if (Integer.parseInt(loadTvScore) > highscore) {
                 this.helper.updateStats("1", Integer.parseInt(loadTvScore));
             }
-
         }
 
         this.tvScore.setText(loadTvScore);
@@ -80,17 +79,6 @@ public class PostGameActivity extends AppCompatActivity {
         long result = this.helper.addHistory(date, Integer.valueOf(loadTvScore), loadTvTime);
 
         this.helper.resetPowerupsActive();
-
-        this.finishAddGameStats(result);
-    }
-
-    private void finishAddGameStats(long result) {
-        if (result == -1) {
-            Toast.makeText(this, "Failed to Add Game Stats to History", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Added Game Stats to History", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override

@@ -133,11 +133,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_STATS_HIGHEST + ", " + COLUMN_STATS_BALANCE + ") " +
                 "values(0, 1000)");
 
-        sqLiteDatabase.execSQL("insert into " + TABLE_NAME_HISTORY + "(" +
-                COLUMN_HISTORY_DATE + ", " + COLUMN_HISTORY_SCORE + ", " +
-                COLUMN_HISTORY_TIME + ") " +
-                "values('08/20/21', 9999, '01:10')");
-
         sqLiteDatabase.execSQL("insert into " + TABLE_NAME_ACHIE +
                 "(" + COLUMN_ACHIE_NAME + ", " + COLUMN_ACHIE_DESCRIPTION
                 + ", " + COLUMN_ACHIE_ACHIEVED + ") values('Utter Defeat', 'Get defeated within 5 seconds', 0)");

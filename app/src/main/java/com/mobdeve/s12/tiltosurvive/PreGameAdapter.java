@@ -66,7 +66,7 @@ public class PreGameAdapter extends RecyclerView.Adapter<PreGameAdapter.PreGameV
         }
         holder.tvPowerupName.setText(String.valueOf(powerup.getTitle()));
 
-        if (isOwned != 0) {
+        if (isOwned != 0 && isOwned != 2) {
             holder.ibPowerupIcon.setOnClickListener(v -> {
                 System.out.println(counter);
                 if (counter <= 3 && powerup.isSelected() == 1) {

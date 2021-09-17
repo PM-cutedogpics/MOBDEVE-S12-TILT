@@ -73,12 +73,7 @@ public class StoreActivity extends AppCompatActivity {
 
     private void initRecyclerView() {
         this.recyclerView = findViewById(R.id.rv_store_powerup);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3){
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
 
         this.recyclerView.setLayoutManager(gridLayoutManager);
 
@@ -96,24 +91,6 @@ public class StoreActivity extends AppCompatActivity {
         this.storeAdapter = new StoreAdapter(StoreActivity.this, StoreActivity.this, this.helper, this.powerups, this.tvBalance, this.ivView, this.tvFail, this.tvSuccess);
         this.recyclerView.setAdapter(this.storeAdapter);
         this.helper.close();
-    }
-
-    private void finishUpdateStore(long result) {
-        if (result == -1) {
-            Toast.makeText(this, "Failed to Buy Power Up", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Power Up Successfully Bought", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void finishUpdateBalance(long result) {
-        if (result == -1) {
-            Toast.makeText(this, "Failed to Save Balance", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Balance Saved", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
