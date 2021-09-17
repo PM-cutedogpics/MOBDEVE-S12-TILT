@@ -50,7 +50,7 @@ public class IngameActivity extends AppCompatActivity {
         this.tvMainMenu = findViewById(R.id.tv_mainmenu);
         this.tvGameOver = findViewById(R.id.tv_game_over);
         this.tvGameOver.setOnClickListener(v -> this.gameOver());
-        this.gamePanel = new GamePanel(this, this.timer, this.tvGameOver, this.ibtnPause);
+        this.gamePanel = new GamePanel(this, this.timer, this.tvScore, this.tvGameOver, this.ibtnPause);
         SurfaceView surface = (SurfaceView) findViewById(R.id.sv_game);
         surface.getHolder().addCallback(gamePanel);
 
@@ -125,6 +125,10 @@ public class IngameActivity extends AppCompatActivity {
     }
 
     public void gameOver() {
+        long elapsedMillis = SystemClock.elapsedRealtime() - timer.getBase();
+        int newScore = (int) (elapsedMillis/323.234);
+
+        tvScore.setText(newScore+"");
         Intent intent = new Intent(IngameActivity.this, PostGameActivity.class);
         intent.putExtra(Keys.KEY_TV_TIME.name(), timer.getText());
         intent.putExtra(Keys.KEY_TV_SCORE.name(), tvScore.getText());
