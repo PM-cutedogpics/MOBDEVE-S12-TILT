@@ -166,6 +166,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                             if(Rect.intersects(spaceship.getCollisionShape(), cows.get(i).getCollisionShape())) {
                                 if (this.spaceship.shielded) {
                                     spaceship.shielded = false;
+                                    cows.remove(i);
                                     spaceship.setSpaceship(BitmapFactory.decodeResource(getResources(), R.drawable.spaceship), "no shield");
                                 } else {
                                     gameOver = true;
