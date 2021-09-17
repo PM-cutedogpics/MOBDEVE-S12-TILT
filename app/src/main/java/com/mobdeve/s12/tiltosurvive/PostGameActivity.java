@@ -67,7 +67,7 @@ public class PostGameActivity extends AppCompatActivity {
             if (Integer.parseInt(loadTvScore) > highscore) {
                 this.helper.updateStats("1", Integer.parseInt(loadTvScore));
             }
-
+            this.helper.updateBalance("1", cursor.getInt(2) + Integer.parseInt(loadTvScore));
         }
 
         this.tvScore.setText(loadTvScore);
