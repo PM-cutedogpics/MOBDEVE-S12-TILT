@@ -60,7 +60,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
         setFocusable(true);
         cows = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             Cow cow = new Cow(getResources());
             cows.add(cow);
         }
@@ -149,7 +149,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 }
 
 
-            if(counter > 60)
+            if(counter > 45)
                 if (!paused)
                     if (counter % 4 == 0){
                         for (int i = 0; i < cows.size(); i++) {

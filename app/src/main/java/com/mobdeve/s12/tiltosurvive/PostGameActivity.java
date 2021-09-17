@@ -33,14 +33,17 @@ public class PostGameActivity extends AppCompatActivity {
 
     private AchievementModel achievement;
 
+    NotificationCompat.Builder builder1;
+    NotificationCompat.Builder builder2;
+    NotificationCompat.Builder builder3;
+    int ach1 = 0, ach2 = 0, ach3 = 0;
+
     String GROUP_ACHIEVEMENTS = "com.android.mobdeve.achievements";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_game);
-
-        createNotificationChannel();
 
         this.helper = new DatabaseHelper(PostGameActivity.this);
 
@@ -72,19 +75,6 @@ public class PostGameActivity extends AppCompatActivity {
         MainActivity.music.start();
 
         this.loadData();
-    }
-
-    private void createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "achievementsChannel";
-            String description = "Channel for Tilt to Survive Achievements";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("notifyAchievement", name, importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
     }
 
     private void loadData(){
@@ -128,16 +118,13 @@ public class PostGameActivity extends AppCompatActivity {
                 this.helper.updateAchievements("Giveaway!", 1);
 //                sendNotification("You have earned Giveaway!");
 //                Toast.makeText(this, "You have earned Giveaway!", Toast.LENGTH_SHORT).show();
-                NotificationCompat.Builder builder1 = new NotificationCompat.Builder(this, "notifyAchievement")
+                builder1 = new NotificationCompat.Builder(this, "notifyAchievement")
                         .setSmallIcon(R.drawable.notif)
                         .setContentTitle("Achievement Unlocked!")
                         .setContentText("You have earned Giveaway!")
                         .setDefaults(DEFAULT_SOUND | DEFAULT_VIBRATE) //Important for heads-up notification
                         .setPriority(NotificationCompat.PRIORITY_MAX);
-
-                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-                int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-                notificationManagerCompat.notify(m, builder1.build());
+                ach1 = 1;
             }
         }
 
@@ -152,17 +139,13 @@ public class PostGameActivity extends AppCompatActivity {
                 this.helper.updateAchievements("Stampede", 1);
 //                sendNotification("You have earned Stampede!");
 //                Toast.makeText(this, "You have earned Stampede!", Toast.LENGTH_SHORT).show();
-                NotificationCompat.Builder builder2 = new NotificationCompat.Builder(this, "notifyAchievement")
+                builder2 = new NotificationCompat.Builder(this, "notifyAchievement")
                         .setSmallIcon(R.drawable.notif)
                         .setContentTitle("Achievement Unlocked!")
                         .setContentText("You have earned Stampede!")
                         .setDefaults(DEFAULT_SOUND | DEFAULT_VIBRATE) //Important for heads-up notification
                         .setPriority(NotificationCompat.PRIORITY_MAX);
-
-                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-                int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-                notificationManagerCompat.notify(m, builder2.build());
-
+                ach2 = 1;
             }
         }
 
@@ -183,12 +166,25 @@ public class PostGameActivity extends AppCompatActivity {
                         .setContentText("You have earned Cattle Driver!")
                         .setDefaults(DEFAULT_SOUND | DEFAULT_VIBRATE) //Important for heads-up notification
                         .setPriority(NotificationCompat.PRIORITY_MAX);
-
-                NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
-                int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
-                notificationManagerCompat.notify(m, builder3.build());
+                ach3 = 1;
             }
         }
+
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+
+        if (ach1 == 1) {
+            int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+            notificationManagerCompat.notify(m, builder1.build());
+        }
+        if (ach2 == 1) {
+            int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+            notificationManagerCompat.notify(m, builder2.build());
+        }
+        if (ach3 == 1) {
+            int m = (int) ((new Date().getTime() / 1000L) % Integer.MAX_VALUE);
+            notificationManagerCompat.notify(m, builder3.build());
+        }
+
     }
 
 //    private void sendNotification(String message) {
